@@ -1,0 +1,15 @@
+<label>Name</label>
+<input type="text" name="name" value="<%= gallery.name %>">
+<br>
+<label for="previewArtwork">Preview Artwork</label>
+<br>
+<select name="previewArtwork">
+    <% artworks.forEach(artwork => { %>
+        <% if (artwork.id == gallery.previewArtwork) { %>
+            <option selected value="<%= artwork.id %>"><%= artwork.title %></option>
+        <% } else { %>
+            <option value="<%= artwork.id %>"><%= artwork.title %></option>
+        <% } %>
+    <% }) %>
+</select>
+<br>

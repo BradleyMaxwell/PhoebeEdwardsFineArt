@@ -1,0 +1,21 @@
+<div class="center-div">
+    <h1 style="margin: 4rem 0 4rem 0;">SHOP</h1>
+</div>
+
+<div class="center-div">
+    <div class="shop-item-collection">
+        <% productsWithImage.forEach(productWithImage => { %>
+            <div class="shop-item">
+                <a href="/shop/<%= productWithImage[0].id %>">
+                    <img src="<%= productWithImage[1].imagePath %>" alt="">
+                    <h3><%= productWithImage[1].title %> (<%= productWithImage[0].productType %>)</h3>
+                    <% if (productWithImage[0].productType === 'Original') { %>
+                        <p>£<%= productWithImage[0].price %></p>
+                    <% } else { %>
+                        <p>Starting from £<%= productWithImage[0].price[0] %></p>
+                    <% } %>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</div>

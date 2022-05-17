@@ -1,0 +1,17 @@
+<h1>All Galleries</h1>
+<a href="/admin/gallery/new">Add New Gallery</a>
+<a href="/admin">Back to Admin Hub</a>
+<% galleries.forEach(gallery => { %>
+    <div style="padding: 1rem;"><%= gallery.name %>
+        <% artworks.forEach(artwork => { %>
+            <% if (artwork.id == gallery.previewArtwork) { %>
+                <br>
+                <img height="200" src="<%= artwork.imagePath %>" alt="">
+                <br>
+                <% return; %>
+            <% } %>
+        <% }) %>
+        <a href="/admin/gallery/<%= gallery.id %>/edit">Edit</a> 
+        <%- include("../../partials/deleteForm", {url: `/admin/gallery/${gallery.id}`}) %>
+    </div>
+<% }) %>

@@ -1,0 +1,14 @@
+<h1>All Artwork</h1>
+<a href="/admin/artwork/new">Add New Artwork</a>
+<a href="/admin">Back to Admin Hub</a>
+<br>
+<% artworks.forEach(artwork => { %>
+    <div style="display: inline-block; padding: 1rem;"> 
+        <%= artwork.title %> <br>
+
+        <img height="200" src="<%= artwork.imagePath %>" <% if (artwork.showInGallery === false) { %> style="opacity: 0.3;" <% } %>>
+        <br>
+        <a href="/admin/artwork/<%= artwork.id %>/edit">Edit</a>
+        <%- include("../../partials/deleteForm", {url: `/admin/artwork/${artwork.id}`}) %>
+    </div>
+<% }) %>

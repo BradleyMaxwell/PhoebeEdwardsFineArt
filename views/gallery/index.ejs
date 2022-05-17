@@ -1,49 +1,18 @@
-<section id="gallery-browse">
-    <div class="center-div">
-        <h1>MY GALLERY</h1>
-    </div>
-
-    <div id="gallery-preview-container">
-        <div class="gallery-preview">
-            <a href="gallery/equine">
-                <img src="images/gallery-images/equine/equine_Stradivarius_1.png" alt="">
-                <h3>Equine and Pet Portraits</h3>
-            </a>
+<div class="center-div-xy">
+    <div id="gallery-browse">
+        <div class="center-div">
+            <h1>MY GALLERY</h1>
         </div>
-
-        <div class="gallery-preview">
-            <a href="/portraits">
-                <img src="images/gallery-images/portrait/portrait1.jpeg" alt="">
-                <h3>Portraits</h3>
-            </a>
-        </div>
-
-        <div class="gallery-preview">
-            <a href="/photography">
-                <img src="images/gallery-images/photography/photography_sheeps.jpeg" alt="">
-                <h3>Photography</h3>
-            </a>
-        </div>
-
-        <div class="gallery-preview">
-            <a href="gallery/digital">
-                <img src="images/gallery-images/digital/digital1.jpeg" alt="">
-                <h3>Digital</h3>
-            </a>
-        </div>
-
-        <div class="gallery-preview">
-            <a href="/landscapes">
-                <img src="images/gallery-images/landscape/landscape1.jpeg" alt="">
-                <h3>Landscapes and Nature</h3>
-            </a>
-        </div>
-
-        <div class="gallery-preview">
-            <a href="university">
-                <img src="images/gallery-images/equine/equine2.JPG" alt="">
-                <h3>University Work</h3>
-            </a>
+    
+        <div id="gallery-preview-container">
+            <% galleries.forEach(gallery => { %>
+                <div class="gallery-preview">
+                    <a href="/gallery/<%= gallery[0].id %>">
+                        <img height="200" src="<%= gallery[1].imagePath %>" alt="">
+                        <h3><%= gallery[0].name %></h3>
+                    </a>
+                </div>
+            <% }) %>
         </div>
     </div>
-</section>
+</div>

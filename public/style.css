@@ -1,9 +1,24 @@
 /* GENERAL */
 
-/*@font-face {
+@font-face {
     font-family: 'Avenir';
     src: url('../fonts/Avenir.eot?#iefix') format('embedded-opentype'),  url('../fonts/Avenir.woff') format('woff'), url('../fonts/Avenir.ttf')  format('truetype'), url('../fonts/Avenir.svg#Avenir') format('svg');
-  }*/
+}
+
+:root {
+    --theme-grey: #707070;
+    --theme-lightgrey: #D1D0D0;
+    --theme-lightpink: #F9D9DB;
+    --theme-pink: #F2B8BE;
+    --theme-darkpink: #DEABB0;
+    --theme-boxshadow: 0px 3px 10px var(--theme-grey);
+    /* CAROUSEL VARIABLES */
+
+    --carousel-display-width: 100vw; 
+    --carousel-slider-width: 85vw;
+    --carousel-element-gap: 2.5vw;
+    --carousel-element-on-display: 3;
+}
 
 * {
     padding: 0;
@@ -13,32 +28,20 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 100%;
+html, body {
+    overflow-x: hidden; /* used to prevent unwanted sideways scrolling */
 }
-
-/* VARIABLES */
-
-:root {
-    --theme-grey: #707070;
-    --theme-lightgrey: #D1D0D0;
-    --theme-lightpink: #F9D9DB;
-    --theme-pink: #F2B8BE;
-    --theme-darkpink: #DEABB0;
-
-    --h3-size: 2.1875rem;
-}
-
-/* FONTS / TEXT */
 
 h1, h2, h3, p {
     max-width: 50ch;
     text-align: center;
     line-height: 1.6;
 }
-p {
-    color: #545454;
+
+h1, h2, h3, a {
+    color: black;
 }
+
 h1 {
     font-size: 2.1875rem; /* 35 px */
     font-weight: 400; /* Regular */
@@ -57,11 +60,12 @@ h3 {
 p {
     font-size: 1.4375rem; /* 23 px */
     font-weight: 300; /* light */
+    color: var(--theme-grey);
 }
 
 a {
-    font-size: 19px;
     font-weight: 300;
+    color: black;
 }
 
 .blue-link {
@@ -74,14 +78,6 @@ a {
     text-align: center;
 }
 
-.inline-block-div { /* make it so that the div box is tight to the text content so it can be moved around easier */
-    display: inline-block;
-}
-
-.block-div { /* make a div element display as a block. Useful for spreading out text within divs */
-    display: block;
-}
-
 .content-div { /* used to signal that a div is used to store different contents within */
 
     /* spaces out the content consistently */ 
@@ -91,28 +87,21 @@ a {
     gap: 1rem;
     align-items: center;
 }
+
 .center-div {
     display: flex;
     justify-content: center;
 }
 
-.right-div { /* position on the right of the parent div */
-}
-
-.left-div { /* position on the right of the parent div */
-    display: flex;
-    justify-content: start;
-}
-
-.center-div-xy {
+.center-div-xy { /* positions child div in the center on the x and y axis */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.italic-text {
-    font-style: italic;
+.keep-within-margin { /* will be used to keep the desired divs within a certain width to give the illusion of a content margin */
+    max-width: 1300px;
 }
 
 /* NAV BARS */
@@ -121,20 +110,21 @@ header nav { /* Main Navigation Bar */
     border-bottom-style: solid;
     border-bottom-width: 1px;
     color: #707070;
-    height: 100px;
+    min-height: fit-content;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 header nav ul { /* the content in the nav bar specifically for header */
     position: relative;
     display: flex;
-    left: calc(100% - 750px);
-    gap: 5rem;
+    align-items: center;
 }
 
 header nav ul li {
     list-style: none;
+    margin: 2rem;
 }
 
 header nav ul a {
@@ -143,8 +133,13 @@ header nav ul a {
     font-size: 1.4375rem;
 }
 
+
 header nav a:hover {
     color: black;
+}
+
+header nav ul > * {
+    height: min-content;
 }
 
 footer { /* Social Media Link Bar */
@@ -158,183 +153,23 @@ footer nav {
     display: flex;
     gap: 3.125rem; /* 50px */
     position: relative;
-    left: calc(100% - 360px);
 }
 
-section { /* all sections */
-   overflow: hidden;
-   position: relative;
-   background-repeat: no-repeat;
-}
+/* HOME */
 
- /* INPUTS */
-
-button { /* All Buttons */
-    border-radius: 34px;
-    border-style: none;
-    font-size: 1.4375rem; /* 23px */
-    font-weight: 400;
-    box-shadow: 0 0.5em 0.5em -0.4em var(--theme-grey);
-    padding: 1rem 2rem 1rem 2rem;
-}
-
-button:hover {
-    cursor: pointer;
-    filter: brightness(105%);
-}
-
-.pink-button {
-    background-color: var(--theme-pink);
-}
-
-.lightpink-button {
-    background-color: var(--theme-lightpink);
-}
-
-/* INDEX */
-
-.home-section {
-    height: fit-content;
-    min-height: 80vh;
-}
-
-#home-biography {
-    position: relative;
-    height: fit-content;
-}
-
-#home-biography-logo-container {
-    width: 100%;
-    min-height: 50vh;
-    background-image: url('images/home-images/rose.jpeg');
-    /*background-image: linear-gradient(to top, white, var(--theme-lightpink));*/
-    background-position: center;
-    background-size: cover;
-    
-}
-#home-biography-logo {
-    width: 70vw;
-}
-
-#home-biography-content {
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-    position: relative;
-    top: -300px;
-    margin-bottom: -300px; /* keep the same as the top value above to get rid of the empty space left behind */
-    height: fit-content;
-}
-
-#home-biography-text {
-    width: fit-content;
-    position: relative;
-    align-self: center;
-    padding-bottom: 9.375rem;
-}
-
-#home-biography-text-intro {
-    margin-bottom: 5rem; /* add space between the intro and the link part of the text */
-}
-
-#home-slogan {
-    background-color: var(--theme-lightpink);
-    padding: 3.4375rem;
-}
-
-#home-gallery {
-    padding: 4.375rem;
-}
-
-#home-gallery-carousel {
-    padding: 6rem 0 2rem 0;
-}
-
-#home-gallery-carousel .gallery-carousel-element { /* so that the overflow is hidden */
-    opacity: 0;
-}
-
-#home-gallery-carousel .gallery-carousel-display img {
+#home-carousel .gallery-carousel-element > img {
     border-radius: 100%;
 }
 
-#collectorscircle {
-    border: 3px solid var(--theme-darkpink);
-    position: relative;
-    border-radius: 50px;
-    width: fit-content;
-    padding: 3.75rem;
-    margin: 4rem;
+#home-carousel button {
+    background-color: white;
 }
-
-#collectorscircle input {
-    border: solid 1px var(--theme-grey);
-    border-radius: 0;
-    width: 80%;
-    font-size: 1.1875rem;
-    padding: 0.5rem;
-}
-
-#home-shopcontact-container {
-    display: flex;
-    gap: 3.125rem; /* 50px */
-    justify-content: center;
-    flex-wrap: wrap; /* when the cards are too big on the screen to both fit on the same line, move it underneath */
-    padding: 3rem; /* so it doesnt touch the edge of the screen so you can see the cards clearly */
-
-}
-
-.home-shopcontact-card {
-    position: relative; /* so I can position the link buttons relative to the card */
-    box-sizing: border-box; /* so the padding doesnt affect the size of the cards */
-    border: 1.5px solid var(--theme-grey);
-    min-width: fit-content; /* make sure that the cards have at least enough width to display the content */
-    min-height: fit-content;
-    width: 34.375rem; /* 550px */
-    height: 42.5rem; /* 680px */
-    border-radius: 50px;
-    padding: 2.8125rem 0 2.8125rem 0; /* 45px padding at the top and bottom of the card */
-    overflow: hidden; /* done this to make the transparent background not overflow with the rounded corners */
-    box-shadow: 0px 3px 10px var(--theme-grey);
-
-}
-
-.home-shopcontact-card::before { /* the ::before pseudo element is used to contain the background settings for both cards */
-    content: ''; /* makes the background show */
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover;
-}
-
-.home-shopcontact-card-content > form { /* the link button for each card */
-    position: absolute; /* position it relatively to the card */
-    bottom: 2.8125rem;
-}
-
-.home-shopcontact-card-content > ul {
-    font-size: 1.4375rem; /* 23px */
-    line-height: 4.0625rem; /* 60px */
-}
-
-#home-shop::before { /* for setting the background image of the shop card with its opacity */
-    background-image: url('images/home-images/home_shop_background.jpg');
-    opacity: 0.2;
-}
-
-#home-contact::before { /* setting the background image for the contact card with its opacity */
-    background-image: url('images/home-images/contactbackground.jpg');
-    opacity: 0.2;
-}
-
 /* BIOGRAPHY */
 
 #aboutme-section {
     display: flex;
     align-items: center;
-    background-image: url(/images/phoebe-painting/paintingpic5.jpeg);
+    background-image: url('images/backgrounds/paintingpic5.jpeg');
     background-size: cover;
     width: 100vw;
 }
@@ -361,9 +196,8 @@ button:hover {
     align-self: flex-end;
     width: 60%;
 }
-/* GALLERY */
 
-/* gallery preview hub */
+/* GALLERY HUB */
 
 #gallery-browse h1 {
     margin: 3rem;
@@ -372,8 +206,8 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
-    gap: 2.5vw;
-    margin: 2.5vw;
+    gap: 5vw;
+    margin: 5vw;
 }
 
 #gallery-preview-container a {
@@ -388,15 +222,12 @@ button:hover {
     grid-gap: 1.5rem;
     cursor: pointer;
     transition: all .4s ease-in-out;
-}
-
-.gallery-preview:hover img {
-    border: 2px solid var(--theme-lightpink);
+    width: fit-content;
 }
 
 .gallery-preview img {
-    width: 30vw;
-    height: 30vw;
+    width: 25vw;
+    height: 25vw;
     object-fit: cover;
     border-radius: 100%;
     box-shadow: 0px 3px 10px var(--theme-grey);
@@ -406,169 +237,257 @@ button:hover {
     transform: scale(1.075);
 }
 
-/* individual galleries */
+/* GALLERY CAROUSELS */
 
 .individual-gallery {
-    background-image: url('images/gallery-images/gallery_background.jpeg');
+    position: relative;
+    background-image: url('/images/backgrounds/gallery_background.jpeg');
     background-size: cover;
     background-position: top;
     min-height: fit-content;
     height: 100vh;
 }
 
-.gallery-carousel-container {
-    position: relative; /* nav buttons will be positioned relative to the container */
-    width: fit-content;
+.gallery-carousel-container .center-div {
+    margin-bottom: 4rem;
 }
 
-.gallery-carousel-title {
+.gallery-carousel-display {
     position: relative;
-    top: -4rem;
+    width: var(--carousel-display-width);
 }
 
-.gallery-carousel-display { /* created so I can separate the nav buttons from the content as overflow is hidden, so buttons get hidden too */
-    width: 80vw; /* makes it as wide as the container */
-    box-sizing: content-box; /* the display div should not count its border as the width because we are trying to fit in the elements to the visible */
+.gallery-carousel-slider {
+    width: var(--carousel-slider-width);
 }
 
 .gallery-carousel-content { /* the container for all the elements in the carousel, will be moved based on arrow pressed */
     display: flex;
     width: fit-content;
-    gap: 2.5vw; /* to display 3 images perfectly, the gap is the container width - (3 * element width) / 2 */
-    transition: 0.5s ease-in-out;
-}
-
-.carousel-nav-button {
-    position: absolute; /* will be positioned in relation to where the carousel container is */
-    top: 50%;
-    transform: translateY(-50%); 
-    /* vertically aligns both buttons with the middle of the carousel */
-    cursor: pointer;
-    box-sizing: border-box;
-    z-index: 1;
-}
-
-.carousel-previous {
-    left: -5rem;
-    display: none; /* at the start of the carousel you won't be able to go previous if you haven't pressed next yet */
-}
-
-.carousel-next {
-    right: -5rem;
+    gap: var(--carousel-element-gap); /* to display 3 images perfectly, the gap is the container width - (3 * element width) / 2 */
+    transition: transform 300ms ease-in-out;
 }
 
 .gallery-carousel-element {
     width: fit-content;
     box-sizing: border-box; /* so that it factors in the border around the images into the width of the element */
-    opacity: 0.3;
-    transition: all 0.5s ease-in-out; /* make elements inactive over the period of time the carousel moves, looks smoother */
-}
-.active-element {
-    opacity: 1 !important; /* i made this important because theres specific styling on the homepage carousel that was overriding this */
-    cursor: pointer;
-}
-
-.active-element:hover {
-    transform: scale(103%);
-    transition: 0.3s ease-in-out;
-}
-
-.active-element:hover img { /* make only the active element have an animation when hovered */
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 6.18px 10.3px var(--theme-grey);
-    border-style: solid;
+    /* transition: all 0.5s ease-in-out; make elements inactive over the period of time the carousel moves, looks smoother */
 }
 
 .gallery-carousel-element img {
     box-shadow: 0px 3px 10px var(--theme-grey);
-    width: 25vw;
-    height: 25vw;
+    width: calc((var(--carousel-slider-width) - (2 * var(--carousel-element-gap))) / var(--carousel-element-on-display));
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 1%;
+    border-radius: 0.25rem;
     border: 3px solid var(--theme-lightpink);
     border-style: none;
+    box-sizing: content-box;
 }
 
+.carousel-button {
+    position: absolute;
+    width: calc((100vw - var(--carousel-slider-width) - (2 * var(--carousel-element-gap))) / 2);
+    height: 100%;
+    border-style: none;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    z-index: 1;
+}
 
+.carousel-button:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.previous-button {
+    display: none; /* hidden because carousel starts at the beginning */
+    border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.next-button {
+    right: 0;
+    border-bottom-left-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+}
 
 /* SHOP */
 
-#shop-main h1 {
-    margin: 3rem 0 6rem 0;
-}
-#commissions {
-    background-color: var(--theme-lightpink);
-    padding: 3rem;
-    width: fit-content;
-    border-radius: 50px;
-}
 
-.shop-container {
-    width: 80vw;
-    background-color: var(--theme-lightgrey);
+.shop-item-collection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 85vw;
+    justify-content: center;
+    gap: 5vw;
+    padding-bottom: 4rem;
 }
-
-/* CONTACT */
-
-#contact-page {
-    padding: 0 4rem;
-}
-
-#contactform {
-    background-color: var(--theme-lightgrey);
-    max-width: fit-content;
-    font-size: 1.5625rem;
-    border-radius: 50px;
+.shop-item {
+    width: 25vw;
     border: 1px solid var(--theme-grey);
-    padding: 3.4375rem;
-    display: flex;
-    gap: 2.8125rem;
+    border-radius: 1.6875rem;
+    padding: 3rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+    transition: transform 400ms ease-in-out;
+    cursor: pointer;
 }
 
-#contactform-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2.1875rem;
-}
-.contactform-info-element {
-    display: flex;
-    flex-direction: column;
+.shop-item:hover {
+    transform: scale(1.05);
 }
 
-.contactform-info-element label {
-    position: relative;
-    left: 2.1875rem;
+.shop-item a {
+    text-decoration: none;
+}
+.shop-item img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.125rem;
 }
 
-.contactform-info-element input {
-    text-indent: 1.875rem;
+.shop-item-focus {
+    background-color: var(--theme-lightpink);
+}
+
+.shop-item-focus-card {
+    background-color: white;
+    max-width: 90vw;
+    width: fit-content;
+    border: 5px solid var(--theme-pink);
+    border-radius: 62px;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+    margin: 4rem 0 4rem 0;
+    display: flex;
+    gap: 4rem;
+    padding: 4rem;
+
+}
+
+#shop-item-focus-image img {
+    border-radius: 18px;
+    max-width: 100%;
+    min-width: 40vw;
+}
+
+#shop-item-focus-info {
+    min-width: 30vw;
+}
+
+#shop-item-focus-info > * {
+    margin-bottom: 2rem;
+}
+
+#addBasketButton {
+    background-color: var(--theme-pink);
+    border-style: none;
+    padding: 1rem;
+    border-radius: 40px;
+    width: 100%;
+}
+
+#addBasketButton:hover {
+    background-color: var(--theme-lightpink);
+    cursor: pointer;
+}
+.printSelect {
+    display: flex;
+}
+.printSelect button {
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0;
+    border: 1px solid var(--theme-grey);
+    cursor: pointer;
+    background-color: white;
+}
+
+.printSelect button.selected-print {
+    border-color: black;
+    outline: 2px solid black;
+}
+
+.printSelect button.selected-print p {
+    color: black;
+}
+
+.framingSelect {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: fit-content;
+    border: solid 1px var(--theme-grey);
+}
+
+.framingOptionButton {
+    padding: 1rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.framingOptionButton img {
+    border-radius: 100%;
+    height: 4.0625rem;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--theme-grey);
+    object-fit: cover;
+}
+
+.selected-framing {
+    outline: 2px solid black;
+}
+
+#priceDisplay {
+    display: inline;
+    font-weight: 400;
+    color: black;
+}
+
+.loginSignup-container {
+    height: fit-content;
+    min-height: 80vh;
+}
+
+.loginSignup {
+    border: 1px solid var(--theme-grey);
+    box-shadow: var(--theme-boxshadow);
+    background-color: var(--theme-lightgrey);
+    padding: 2rem 4rem 0 4rem;
+    margin: 4rem;
+}
+
+.loginSignup form > * {
+    margin-bottom: 2rem;
+}
+
+.loginSignup input {
     width: 20rem;
-    height: 3.75rem;
+    max-width: 100%;
+    height: 3rem;
     border-radius: 50px;
     border-style: none;
-    font-size: 1.5625rem;
+    padding: 2rem;
+    font-size: 1.1rem;
+    background-color: white;
 }
 
-.contactform-info-element input[type=email] {
-    width: 28rem;
+.loginSignup input:focus {
+    outline: 1px solid black;
+    font-size: 1.1rem;
 }
-
-.contactform-info-element select {
-    width: 20rem;
-    height: 3.75rem;
-    border-radius: 50px;
+.loginSignup button {
+    padding: 0.5rem;
     border-style: none;
-    font-size: 1.5625rem;
-    text-indent: 1.875rem;
+    border-radius: 5px;
+    background-color: var(--theme-pink);
+    width: 100%;
+    cursor: pointer;
 }
 
-#contactform-textbox textarea {
-    border-radius: 50px;
-    border-style: none;
-    resize: none;
-    width: 30rem;
-    height: 100%;
-    font-size: 1.5625rem;
-    padding: 1.875rem;
+.loginSignup button:hover {
+    filter: brightness(1.1);
+    outline: 1px solid var(--theme-grey);
 }
 
+.loginSignup div {
+    margin-top: 2rem;
+}

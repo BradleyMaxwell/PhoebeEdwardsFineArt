@@ -1,0 +1,45 @@
+<script>
+    function addAnotherAdditionalImageOption () {
+    }
+</script>
+
+<div>
+    <label for="title">Title</label><br>
+    <input type="text" name="title" value="<%= artwork.title %>">
+</div>
+
+<div>
+    <label for="context">Context of Work</label><br>
+    <textarea name="context" id="" cols="30" rows="10"><%= artwork.context %></textarea>
+</div>
+
+<div>
+    <label for="gallery">Gallery</label><br>
+    <select name="gallery">
+        <% galleries.forEach(gallery => { %>
+            <% if (gallery.id == artwork.gallery) { %> <!-- '==' instead of '===' because id is string but gallery reference id is object -->
+                <option selected value="<%= gallery.id %>"><%= gallery.name %></option>
+            <% } else { %>
+                <option value="<%= gallery.id %>"><%= gallery.name %></option>
+            <% } %>
+        <% }) %>
+    </select>
+</div>
+
+<div>
+    <label for="showInGallery">Show In Gallery?</label>
+    <select name="showInGallery">
+        <% if (artwork.showInGallery === false) { %>
+            <option value="true">Yes</option>
+            <option selected value="false">No</option>
+        <% } else { %>
+            <option selected value="true">Yes</option>
+            <option value="false">No</option>
+        <% } %>
+    </select>
+</div>
+
+<div>
+    <label for="image">Image</label><br>
+    <input type="file" name="image" class="filepond">
+</div>

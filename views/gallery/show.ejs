@@ -1,0 +1,32 @@
+
+<div class="individual-gallery center-div-xy">
+    <div class="gallery-carousel-container">
+        <div class="center-div">
+            <h1><%= gallery.name %></h1>
+        </div>
+
+        <div class="gallery-carousel-display">
+            <button class="carousel-button previous-button">
+                <img src="/images/icons/previous_arrow.svg" alt="">
+            </button>
+            <button class="carousel-button next-button">
+                <img src="/images/icons/next_arrow.svg" alt="">
+            </button>
+
+            <div class="center-div">
+                <div class="gallery-carousel-slider">
+                    <div class="gallery-carousel-content">
+                        <% artworks.forEach(artwork => { %>
+                            <div class="gallery-carousel-element">
+                                <img src="<%= artwork.imagePath %>" alt="">
+                                <h3><%= artwork.title %></h3>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer src="/scripts/carousel.js"></script>

@@ -1,136 +1,78 @@
-<main>
-    <section class="home-section" id="home-biography">
-        <div id="home-biography-logo-container" class="center-div-xy">
-            <img src="images/logos/logo.svg" id="home-biography-logo">
-        </div>
-        <div id="home-biography-content">
-            <img src="images/phoebe-painting/phoebe painting 2.png" alt="">
-            <div id="home-biography-text">
-                <div class="content-div" id="home-biography-text-intro">
-                    <h2>Welcome!</h2>
-                    <p>Explore my artworks ranging 
-                        from equine and pet portraits, to
-                         beautiful landscapes and various 
-                        commission works I have produced 
-                        over the past few years. </p>
-                </div>
-                <div class="content-div" id="home-biography-text-link">
-                    <p>Learn more about the artist behind the work.</p>
-                    <form action="biography.html">
-                        <button class="button pink-button">BIOGRAPHY</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+<section class="home-section" id="home-biography">
+    <h2>Welcome!</h2>
 
-    </section>
+    <p>
+        Explore my artworks ranging 
+        from equine and pet portraits, to 
+        beautiful landscapes and various 
+        commission works I have produced 
+        over the past few years.
+    </p>
 
-    <div id="home-slogan">
-        <div class="center-div">
-            <h2><i>ONE-OF-A-KIND OIL PAINTINGS THAT MAKE YOUR SPACE EXTRA SPECIAL.</i></h2>
-        </div>
-    </div>
+    <p>
+        Learn more about the artist behind the work.
+    </p>
 
-    <section class="home-section" id="home-gallery">
-        <div class="center-div">
-            <h3>I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
-        </div>
+    <button>Biography</button>
+</section>
 
-        <div class="center-div">
-            <div class="gallery-carousel-container" id="home-gallery-carousel">
+<div id="home-slogan">
+    <h2><i>ONE-OF-A-KIND OIL PAINTINGS THAT MAKE YOUR SPACE EXTRA SPECIAL.</i></h2>
+</div>
 
-                <span class="carousel-nav-button carousel-previous">
-                    <img src="../images/icons/previous_arrow.svg" alt="Previous">
-                </span>
+<section class="home-section" id="home-gallery">
+    <h3>I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
+
+        <div class="gallery-carousel-container" id="home-carousel">
+            <div class="gallery-carousel-display">
+                <button class="carousel-button previous-button">
+                    <img src="/images/icons/previous_arrow.svg" alt="">
+                </button>
+                <button class="carousel-button next-button">
+                    <img src="/images/icons/next_arrow.svg" alt="">
+                </button>
     
-                <span class="carousel-nav-button carousel-next">
-                    <img src="../images/icons/next_arrow.svg" alt="Next">
-                </span>
-                
-                <div class="gallery-carousel-display">
-                    <div class="gallery-carousel-content">
-                        <div class="gallery-carousel-element">
-                            <img src="images/gallery-images/equine/equine_Stradivarius_1.png" alt="">
-                            <h3>Equine</h3>
+                <div class="center-div">
+                    <div class="gallery-carousel-slider">
+                        <div class="gallery-carousel-content">
+                            <% galleries.forEach(gallery => { %>
+                                <div class="gallery-carousel-element">
+                                    <img src="<%= gallery[1].imagePath %>" alt="">
+                                    <h3><%= gallery[0].name %></h3>
+                                </div>
+                            <% }) %>
                         </div>
-            
-                        <div class="gallery-carousel-element">
-                            <img src="images/gallery-images/portrait/portrait1.jpeg" alt="">
-                            <h3>Portraits</h3>
-                        </div>
-            
-                        <div class="gallery-carousel-element">
-                            <img src="../images/gallery-images/photography/photography_sheeps.jpeg" alt="">
-                            <h3>Photography</h3>
-                        </div>
-            
-                        <div class="gallery-carousel-element">
-                            <img src="../images/gallery-images/digital/digital1.jpeg" alt="">
-                            <h3>Digital</h3>
-                        </div>
-            
-                        <div class="gallery-carousel-element">
-                            <img src="../images/gallery-images/landscape/landscape1.jpeg" alt="">
-                            <h3>Landscapes and Nature</h3>
-                        </div>
-            
-                        <div class="gallery-carousel-element">
-                            <img src="../images/gallery-images/equine/equine2.JPG" alt="">
-                            <h3>University Work</h3>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
 
-        <div class="center-div">
-            <form action="gallery.html">
-                <button class="button pink-button">VISIT MY GALLERY</button>
-            </form>
-        </div>
-    </section>
+        <button>VISIT MY GALLERY</button>
+</section>
 
-    <div class="center-div">
-        <div id="collectorscircle">
-            <div class="content-div">
-                <h1>JOIN MY COLLECTOR’S CIRCLE!</h1>
-                <p>For studio news and special offers.</p>
-                <input type="text" placeholder="Enter Email...">
-                <button class="lightpink-button">JOIN</button>
-            </div>
-        </div>
-    </div>
+<div>
+    <h1>JOIN MY COLLECTOR'S CIRCLE!</h1>
+    <p>For studio news and special offers.</p>
+    <button>JOIN</button>
+</div>
 
-    <section class="home-section" id="home-shopcontact">
-        <div id="home-shopcontact-container">
-            <div id="home-shop" class="home-shopcontact-card">
-                <div class="home-shopcontact-card-content content-div">
-                    <h1>See Something You Like?</h1>
-                    <ul>
-                        <li>Prints available for A5 to A1.</li>
-                        <li>Optional bespoke framing.</li>
-                        <li>Original handmade works.</li>
-                        <li>Commissions.</li>
-                    </ul>
-                    <form action="shop.html">
-                        <button class="pink-button">SHOP</button>
-                    </form>
-                </div>
-            </div>
+<section class="home-section" id="home-shopcontact">
+    <h1>See Something You Like?</h1>
+    <ul>
+        <li>Prints available for A5 to A1.</li>
+        <li>Optional bespoke framing.</li>
+        <li>Original handmade works.</li>
+        <li>Commissions.</li>
+    </ul>
+    <button>SHOP</button>
 
-            <div id="home-contact" class="home-shopcontact-card content-div">
-                <div class="home-shopcontact-card-content content-div">
-                    <h1>Get in Touch.</h1>
-                    <ul>
-                        <li>Commission work.</li>
-                        <li>General enquiries.</li>
-                        <li>Any related questions.</li>
-                    </ul>
-                    <form action="contact.html">
-                        <button class="pink-button">CONTACT ME</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+    <h1>Get In Touch.</h1>
+    <ul>
+        <li>Commission work.</li>
+        <li>General enquiries.</li>
+        <li>Any related questions.</li>
+    </ul>
+    <button>CONTACT</button>
+</section>
+
+<script defer src="/scripts/carousel.js"></script>

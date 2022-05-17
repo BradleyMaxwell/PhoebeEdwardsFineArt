@@ -1,0 +1,28 @@
+<h2>Shop Items</h2>
+
+<a href="/admin/shop/new">Create New Shop Product</a><br>
+<a href="/admin">Back to Admin Hub</a>
+<br>
+
+<% products.forEach(product => { %>
+    <div style="display: inline-block; padding: 1rem;">
+        <% artworks.forEach(artwork => { %>
+            <% if ( product.artwork == artwork.id ) { %>
+                <h3><%= artwork.title %> (<%= product.productType %>)</h3>
+                <img height="200" src="<%= artwork.imagePath %>">
+                <% return; %>
+            <% } %>
+        <% }) %>
+        <br>
+        Price £<%= product.price %>
+        <br>
+        <% if ( product.framingPrice.length === 0 ) { %>
+            No Framing
+        <% } else { %>
+            Framing £<%= product.framingPrice %>
+        <% } %>
+        <a href="/admin/shop/<%= product.id %>/edit">Edit</a>
+        <%- include("../../partials/deleteForm", {url: `/admin/shop/${product.id}`}) %>
+    </div>
+<% }) %>
+

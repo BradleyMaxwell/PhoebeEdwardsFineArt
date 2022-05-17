@@ -1,0 +1,127 @@
+<script>
+    function changePriceLayout (productType) {
+        let originalPrice = document.getElementById("originalPrice")
+        let printPrices = document.getElementById("printPrices")
+
+        let framingpriceOriginal = document.getElementById("framingpriceOriginal")
+        let framingpricePrint = document.getElementById("framingpricePrint")
+
+        if ( productType.value === "Print") { // allow the user to enter prices for sizes a1 to a5
+            originalPrice.style.display = "none";
+            printPrices.style.display = "block";
+
+            framingpriceOriginal.style.display = "none"
+            framingpricePrint.style.display = "block"
+        }
+        else { // allow user to only enter one price for the original
+            printPrices.style.display = "none";
+            originalPrice.style.display = "block";
+
+            framingpriceOriginal.style.display = "block"
+            framingpricePrint.style.display = "none"
+        }
+    }
+
+    function changeFramingOptionLayout (framingOptionChoice) {
+        let framingOptions = document.getElementById("framingOptions")
+        let productType = document.getElementById("productType")
+
+        if ( framingOptionChoice.value === "Yes" ) {
+            framingOptions.style.display = "block"
+        }
+        else {
+            framingOptions.style.display = "none"
+        }
+    }
+</script>
+
+<div>
+    <label for="artwork">Artwork</label>
+    <select name="artwork" id="productType">
+        <% artworks.forEach(artwork => { %>
+            <option value="<%= artwork.id %>"><%= artwork.title %></option>
+        <% }) %>
+    </select>
+</div>
+
+<div>
+    <label for="productType">Product Type</label>
+    <select name="productType" id="productType" onchange="changePriceLayout(this)">
+        <option value="Original">Original</option>
+        <option value="Print">Print</option>
+    </select>
+</div>
+
+<div>
+    <label for="mediums">Mediums</label><br>
+    <textarea name="mediums" id="" cols="30" rows="10"><%= product.mediums %></textarea>
+</div>
+
+<div>
+    <label for="size">Size</label>
+    <input type="text" placeholder="E.g. 1200 x 1200 mm" name="size" value= "<%= product.size %>">
+</div>
+
+<div id="originalPrice">
+    <label for="price">Price £</label>
+    <input type="number" min="0" step="0.01" name="price">
+</div>
+
+<div id="printPrices" style="display: none;">
+    <label for="A5price">A5 £</label>
+    <input type="number" min="0" step="0.01" name="A5price">
+    <br>
+
+    <label for="A4price">A4 £</label>
+    <input type="number" min="0" step="0.01" name="A4price">
+    <br>
+
+    <label for="A3price">A3 £</label>
+    <input type="number" min="0" step="0.01" name="A3price">
+    <br>
+
+    <label for="A2price">A2 £</label>
+    <input type="number" min="0" step="0.01" name="A2price">
+    <br>
+
+    <label for="A1price">A1 £</label>
+    <input type="number" min="0" step="0.01" name="A1price">
+    <br>
+</div>
+
+<div>
+    <label for="framingOptionChoice">Do you want to have framing options?</label>
+    <select name="framingOptionChoice" onchange="changeFramingOptionLayout(this)">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+    </select>
+
+    <div id="framingOptions" style="display: none;">
+        <div id="framingpriceOriginal">
+            <label for="framingpriceOriginal">Framing £</label>
+            <input type="number" min="0" step="0.01" name="framingpriceOriginal">
+        </div>
+    
+        <div id="framingpricePrint" style="display: none;">
+            <label for="A5framingprice">A5 Framing £</label>
+            <input type="number" min="0" step="0.01" name="A5framingprice">
+            <br>
+    
+            <label for="A4framingprice">A4 Framing £</label>
+            <input type="number" min="0" step="0.01" name="A4framingprice">
+            <br>
+    
+            <label for="A3framingprice">A3 Framing £</label>
+            <input type="number" min="0" step="0.01" name="A3framingprice">
+            <br>
+    
+            <label for="A2framingprice">A2 Framing £</label>
+            <input type="number" min="0" step="0.01" name="A2framingprice">
+            <br>
+    
+            <label for="A1framingprice">A1 Framing £</label>
+            <input type="number" min="0" step="0.01" name="A1framingprice">
+            <br>
+        </div>
+    </div>
+</div>

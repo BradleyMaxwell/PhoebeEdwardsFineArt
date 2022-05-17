@@ -1,0 +1,105 @@
+<script>
+    function changeFramingOptionLayout (framingOptionChoice) {
+        let framingOptions = document.getElementById("framingOptions")
+        let productType = document.getElementById("productType")
+
+        if ( framingOptionChoice.value === "Yes" ) {
+            framingOptions.style.display = "block"
+        }
+        else {
+            framingOptions.style.display = "none"
+        }
+    }
+</script>
+
+<h2>Edit <%= artwork.title %> (<%= product.productType %>)</h2>
+
+<form action="/admin/shop/<%= product.id %>?_method=put" method="post">
+    <% if ( product.productType === "Print" ) { %>
+        <div>
+            <label for="A5price">A5 £</label>
+            <input type="number" min="0" step="0.01" name="A5price" value="<%= product.price[0] %>">
+        </div>
+    
+        <div>
+            <label for="A4price">A4 £</label>
+            <input type="number" min="0" step="0.01" name="A4price" value="<%= product.price[1] %>">
+        </div>
+    
+        <div>
+            <label for="A3price">A3 £</label>
+            <input type="number" min="0" step="0.01" name="A3price" value="<%= product.price[2] %>">
+        </div>
+    
+        <div>
+            <label for="A2price">A2 £</label>
+            <input type="number" min="0" step="0.01" name="A2price" value="<%= product.price[3] %>">
+        </div>
+    
+        <div>
+            <label for="A1price">A1 £</label>
+            <input type="number" min="0" step="0.01" name="A1price" value="<%= product.price[4] %>">
+        </div>
+    <% } else { %>
+        <div id="originalPrice">
+            <label for="price">Price £</label>
+            <input type="number" min="0" step="0.01" name="price" value="<%= product.price[0] %>">
+        </div>
+    <% } %>
+    
+    <div>
+        <label for="mediums">Mediums</label><br>
+        <textarea name="mediums" id="" cols="30" rows="10"><%= product.mediums %></textarea>
+    </div>
+    
+    <div>
+        <label for="size">Size</label>
+        <input type="text" name="size" value="<%= product.size %>">
+    </div>
+    
+    <div>
+        <label for="framingOptionChoice">Do you want to have framing options?</label>
+        <select name="framingOptionChoice" onchange="changeFramingOptionLayout(this)">
+            <% if ( product.framingPrice.length === 0 ) { // no framing option selected %>
+                <option selected value="No">No</option>
+                <option value="Yes">Yes</option>
+            <% } else { // has framing option selected %>
+                <option selected value="Yes">Yes</option>
+                <option value="No">No</option>
+            <% } %>
+        </select>
+
+        <div class="framingOptions" id="framingOptions" <% if ( product.framingPrice.length === 0 ) { %> style="display: none;" <% } %>>
+            <% if ( product.productType === "Original") { %>
+                <div id="framingpriceOriginal">
+                    <label for="framingpriceOriginal">Framing £</label>
+                    <input type="number" min="0" step="0.01" name="framingpriceOriginal" value="<%= product.framingPrice[0] %>">
+                </div>
+            <% } else { %>
+                <div id="framingpricePrint">
+                    <label for="A5framingprice">A5 Framing £</label>
+                    <input type="number" min="0" step="0.01" name="A5framingprice" value="<%= product.framingPrice[0] %>">
+                    <br>
+            
+                    <label for="A4framingprice">A4 Framing £</label>
+                    <input type="number" min="0" step="0.01" name="A4framingprice" value="<%= product.framingPrice[1] %>">
+                    <br>
+            
+                    <label for="A3framingprice">A3 Framing £</label>
+                    <input type="number" min="0" step="0.01" name="A3framingprice" value="<%= product.framingPrice[2] %>">
+                    <br>
+            
+                    <label for="A2framingprice">A2 Framing £</label>
+                    <input type="number" min="0" step="0.01" name="A2framingprice" value="<%= product.framingPrice[3] %>">
+                    <br>
+            
+                    <label for="A1framingprice">A1 Framing £</label>
+                    <input type="number" min="0" step="0.01" name="A1framingprice" value="<%= product.framingPrice[4] %>">
+                    <br>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <a href="/admin/shop">Cancel</a>
+    <button type="submit">Update</button>
+</form>

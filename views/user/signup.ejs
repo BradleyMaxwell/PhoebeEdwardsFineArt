@@ -1,0 +1,37 @@
+<div class="loginSignup-container">
+    <div class="center-div-xy">
+        <div class="loginSignup">
+
+            <form action="/user/signup" method="post" onsubmit="return validateForm()" id="signupForm">
+
+                <h2>Sign Up</h2>
+
+                <div>
+                    <p>Email</p>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div>
+                    <p>First Name</p>
+                    <input type="text" name="firstname" required>
+                </div>
+
+                <div>
+                    <p>Last Name</p>
+                    <input type="text" name="lastname" required>
+                </div>
+
+                <div>
+                    <p>Password</p>
+                    <input type="password" name="password" required id="password">
+                </div>
+
+                <button type="submit"><p>Sign Up</p></button>
+                
+                <div class="center-div">
+                    Already have an account?&nbsp;<a href="/user/login">Log in.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
