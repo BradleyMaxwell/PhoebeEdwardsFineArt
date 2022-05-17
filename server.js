@@ -46,7 +46,7 @@ app.use('/biography', biographyRouter)
 app.use('/gallery', galleryRouter)
 app.use('/shop', shopRouter)
 app.use('/contact', contactRouter)
-app.use('/admin', adminRouter)
+app.use('/admin', requireAuth, adminRouter)
 app.use('/user', userRouter)
 
 //WHERE TO LISTEN FOR REQUESTS
