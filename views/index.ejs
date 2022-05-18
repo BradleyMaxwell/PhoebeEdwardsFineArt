@@ -36,10 +36,12 @@
                     <div class="gallery-carousel-slider">
                         <div class="gallery-carousel-content">
                             <% galleries.forEach(gallery => { %>
-                                <div class="gallery-carousel-element">
-                                    <img src="<%= gallery[1].imagePath %>" alt="">
-                                    <h3><%= gallery[0].name %></h3>
-                                </div>
+                                <a href="/gallery/<%= gallery[0].id %>">
+                                    <div class="gallery-carousel-element">
+                                        <img src="<%= gallery[1].imagePath %>" alt="">
+                                        <h3><%= gallery[0].name %></h3>
+                                    </div>
+                                </a>
                             <% }) %>
                         </div>
                     </div>

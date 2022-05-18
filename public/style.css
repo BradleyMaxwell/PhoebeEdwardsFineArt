@@ -271,12 +271,21 @@ footer nav {
     -webkit-backface-visibility: hidden;
 }
 
+.gallery-carousel-content a {
+    text-decoration: none;
+}
+
 .gallery-carousel-element {
     width: fit-content;
     box-sizing: border-box; /* so that it factors in the border around the images into the width of the element */
     /* transition: all 0.5s ease-in-out; make elements inactive over the period of time the carousel moves, looks smoother */
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
+    transition: transform 400ms ease-in-out;
+}
+
+.gallery-carousel-element:hover {
+    transform: scale(1.05);
 }
 
 .gallery-carousel-element img {
