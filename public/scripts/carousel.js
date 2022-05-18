@@ -6,7 +6,7 @@ galleryCarousels.forEach(gallery => { // add functionality to the previous and n
     const carouselContent = gallery.querySelector('.gallery-carousel-content')
     const elements = Array.from(gallery.querySelectorAll('.gallery-carousel-element'));
 
-    if (elements.length >= 3) {
+    if (elements.length > 3) {
         nextButton.style.display = 'block' // if there is 3 or less artworks in the gallery then the user cannot go to the next 3 artworks
     }
 
