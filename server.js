@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
-const { requireAuth } = require('./public/scripts/jwtAuthenticator')
+const { requireAuth, checkUser } = require('./public/scripts/jwtAuthenticator')
 
 // SETTING UP APP
 app.set('view engine', 'ejs');
@@ -41,6 +41,7 @@ const adminRouter = require('./routes/admin')
 const userRouter = require('./routes/user');
 const { json } = require('body-parser');
 
+app.get('*', checkUser)
 app.use('/', indexRouter)
 app.use('/biography', biographyRouter)
 app.use('/gallery', galleryRouter)

@@ -62,10 +62,22 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+//LOGOUT
+router.get('/logout', (req, res) => {
+    const adminToken = req.cookies.adminJwt
+    if (adminToken) {
+        res.cookie('adminJwt', '', {maxAge: 1})
+    } else {
+        res.cookie('jwt', '', {maxAge: 1})
+    }
+    res.redirect('/')
+})
+
 const maxAge = 60 * 60 * 2 // lifespan in seconds
 function createToken (id) {
     return jwt.sign( { id }, process.env.JWT_TOKEN_SECRET, {
         expiresIn: maxAge
     })
 }
+
 module.exports = router

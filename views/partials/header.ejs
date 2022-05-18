@@ -9,7 +9,14 @@
         </ul>
 
         <ul>
-            <li><a href="/user/login">Log In</a></li>
+            <% if ( adminUser ) { %>
+                <li><a href="/admin">Admin</a></li>
+            <% } %>
+            <% if ( user || adminUser ) { %>
+                <li><a href="/user/logout">Log Out</a></li>
+            <% } else { %>
+                <li><a href="/user/login">Log In</a></li>
+            <% } %>
             <li><a href=""><img src="/images/icons/basket.svg" alt=""></a></li>
         </ul>
     </nav>
