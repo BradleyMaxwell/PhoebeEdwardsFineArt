@@ -6,8 +6,8 @@ galleryCarousels.forEach(gallery => { // add functionality to the previous and n
     const carouselContent = gallery.querySelector('.gallery-carousel-content')
     const elements = Array.from(gallery.querySelectorAll('.gallery-carousel-element'));
 
-    if (elements.length <= 3) {
-        nextButton.style.display = 'none' // if there is 3 or less artworks in the gallery then the user cannot go to the next 3 artworks
+    if (elements.length >= 3) {
+        nextButton.style.display = 'block' // if there is 3 or less artworks in the gallery then the user cannot go to the next 3 artworks
     }
 
     let maxNextTurns = Math.ceil(elements.length / 3) - 1 // how many times the user can click next until they reach the end of the carousel
@@ -24,6 +24,7 @@ galleryCarousels.forEach(gallery => { // add functionality to the previous and n
         
         const newCarouselPosition = index * translateDistance
         carouselContent.style.transform = 'translateX(' + newCarouselPosition + 'vw)'
+        carouselContent.style['-webkit-transform'] = 'translateX(' + newCarouselPosition + 'vw)'
     })
 
     nextButton.addEventListener('click', () => {

@@ -255,7 +255,7 @@ footer nav {
 .gallery-carousel-display {
     position: relative;
     width: var(--carousel-display-width);
-}
+}   
 
 .gallery-carousel-slider {
     width: var(--carousel-slider-width);
@@ -266,12 +266,16 @@ footer nav {
     width: fit-content;
     gap: var(--carousel-element-gap); /* to display 3 images perfectly, the gap is the container width - (3 * element width) / 2 */
     transition: transform 300ms ease-in-out;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
 }
 
 .gallery-carousel-element {
     width: fit-content;
     box-sizing: border-box; /* so that it factors in the border around the images into the width of the element */
     /* transition: all 0.5s ease-in-out; make elements inactive over the period of time the carousel moves, looks smoother */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
 }
 
 .gallery-carousel-element img {
@@ -283,6 +287,8 @@ footer nav {
     border: 3px solid var(--theme-lightpink);
     border-style: none;
     box-sizing: content-box;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
 }
 
 .carousel-button {
@@ -293,6 +299,7 @@ footer nav {
     background: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     z-index: 1;
+    display: none;
 }
 
 .carousel-button:hover {
@@ -300,7 +307,6 @@ footer nav {
 }
 
 .previous-button {
-    display: none; /* hidden because carousel starts at the beginning */
     border-bottom-right-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 }
