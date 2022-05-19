@@ -1,27 +1,45 @@
 <section class="home-section" id="home-biography">
-    <h2>Welcome!</h2>
+    <div id="home-biography-header">
+        <div class="center-div">
+            <img src="/images/icons/logo.svg" alt="">
+        </div>
+    </div>
 
-    <p>
-        Explore my artworks ranging 
-        from equine and pet portraits, to 
-        beautiful landscapes and various 
-        commission works I have produced 
-        over the past few years.
-    </p>
-
-    <p>
-        Learn more about the artist behind the work.
-    </p>
-
-    <button>Biography</button>
+    <div id="home-biography-backgroundimage">
+        <div id="home-biography-content">
+            <div id="home-biography-text">
+                <h1>Welcome!</h1>
+        
+                <p>
+                    Explore my artworks ranging 
+                    from equine and pet portraits, to 
+                    beautiful landscapes and various 
+                    commission works I have produced 
+                    over the past few years.
+                </p>
+        
+                <p>
+                    Learn more about the artist behind the work.
+                </p>
+        
+                <a href="/biography">
+                    <button><h3>BIOGRAPHY</h3></button>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <div id="home-slogan">
-    <h2><i>ONE-OF-A-KIND OIL PAINTINGS THAT MAKE YOUR SPACE EXTRA SPECIAL.</i></h2>
+    <div class="center-div">
+        <h2><i>ONE-OF-A-KIND OIL PAINTINGS THAT MAKE YOUR SPACE EXTRA SPECIAL.</i></h2>
+    </div>
 </div>
 
 <section class="home-section" id="home-gallery">
-    <h3>I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
+    <div class="center-div">
+        <h3 style="margin: 4rem 0;">I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
+    </div>
 
         <div class="gallery-carousel-container" id="home-carousel">
             <div class="gallery-carousel-display">
@@ -49,32 +67,62 @@
             </div>
         </div>
 
-        <button>VISIT MY GALLERY</button>
+        <div class="center-div">
+            <a href="/gallery">
+                <button style="margin: 4rem 0;"><h3>VISIT MY GALLERY</h3></button>
+            </a>
+        </div>
 </section>
 
-<div>
-    <h1>JOIN MY COLLECTOR'S CIRCLE!</h1>
-    <p>For studio news and special offers.</p>
-    <button>JOIN</button>
+<div class="center-div">
+    <div id="collectors-circle">
+        <h1>JOIN MY COLLECTOR'S CIRCLE!</h1>
+        <p>For studio news and special offers.</p>
+        <input type="email" name="email" id="" placeholder="Enter Email...">
+        <div class="center-div">
+            <button><h3>JOIN</h3></button>
+        </div>
+    </div>
 </div>
 
 <section class="home-section" id="home-shopcontact">
-    <h1>See Something You Like?</h1>
-    <ul>
-        <li>Prints available for A5 to A1.</li>
-        <li>Optional bespoke framing.</li>
-        <li>Original handmade works.</li>
-        <li>Commissions.</li>
-    </ul>
-    <button>SHOP</button>
-
-    <h1>Get In Touch.</h1>
-    <ul>
-        <li>Commission work.</li>
-        <li>General enquiries.</li>
-        <li>Any related questions.</li>
-    </ul>
-    <button>CONTACT</button>
+    <div class="center-div">
+        <div id="home-shopcontact-container">
+            <div class="home-shopcontact-card" id="home-shop">
+                <h1>See Something You Like?</h1>
+                <div class="center-div">
+                    <ul>
+                        <li><p>Original handmade works.</p></li>
+                        <li><p>Prints available for A5 to A1.</p></li>
+                        <li><p>Optional bespoke framing.</p></li>
+                    </ul>
+                </div>
+            
+                <div class="center-div">
+                    <a href="/shop">
+                        <button><h3>MY SHOP</h3></button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="home-shopcontact-card" id="home-contact">
+                <h1>Get In Touch.</h1>
+                <div class="center-div">
+                    <ul>
+                        <li><p>Commission work.</p></li>
+                        <li><p>General enquiries.</p></li>
+                        <li><p>Any related questions.</p></li>
+                    </ul>
+                </div>
+                
+                <div class="center-div">
+                    <a href="/contact">
+                        <button><h3>CONTACT ME</h3></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script defer src="/scripts/carousel.js"></script>

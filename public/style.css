@@ -102,6 +102,8 @@ a {
 
 .keep-within-margin { /* will be used to keep the desired divs within a certain width to give the illusion of a content margin */
     max-width: 1300px;
+    width: 100vw;
+    position: relative;
 }
 
 /* NAV BARS */
@@ -110,10 +112,11 @@ header nav { /* Main Navigation Bar */
     border-bottom-style: solid;
     border-bottom-width: 1px;
     color: #707070;
-    min-height: fit-content;
+    min-height: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: fit-content;
 }
 
 header nav ul { /* the content in the nav bar specifically for header */
@@ -124,7 +127,7 @@ header nav ul { /* the content in the nav bar specifically for header */
 
 header nav ul li {
     list-style: none;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 header nav ul a {
@@ -157,6 +160,76 @@ footer nav {
 
 /* HOME */
 
+.home-section {
+    height: fit-content;
+    min-height: 95vh;
+    overflow: hidden;
+}
+
+.home-section button {
+    min-width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+    border-style: none;
+    cursor: pointer;
+    background-color: var(--theme-pink);
+}
+
+.home-section button:hover {
+    filter: brightness(1.05);
+}
+
+#home-biography {
+    height: 120vh;
+}
+
+#home-biography-header {
+    background-position: center;
+    padding: 4rem;
+    background-color: white;
+  background-image: linear-gradient(
+    to bottom, transparent, white
+  ), url("/images/backgrounds/rose.jpeg");
+}
+
+#home-biography-header img {
+    height: 20vh;
+    width: auto;
+}
+
+#home-biography-backgroundimage {
+    height: calc(130vh - (2 * 4rem) - 20vh);
+    background-image: url("/images/backgrounds/paintingpic.png");
+    background-repeat: no-repeat;
+}
+
+#home-biography-content {
+    height: calc(120vh - (2 * 4rem) - 20vh);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#home-biography-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-right: 8rem;
+    height: fit-content;
+}
+
+#home-biography-text > * {
+    margin-bottom: 2rem;
+}
+
+#home-slogan {
+    background: var(--theme-lightpink);
+    padding: 1rem 0;
+}
+
 #home-carousel .gallery-carousel-element > img {
     border-radius: 100%;
 }
@@ -164,6 +237,76 @@ footer nav {
 #home-carousel button {
     background-color: white;
 }
+
+#collectors-circle {
+    width: fit-content;
+    border: 3px solid var(--theme-darkpink);
+    border-radius: 50px;
+    margin: 3.5rem 0 4rem 0;
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+#collectors-circle >*:not(:last-child) {
+    margin-bottom: 2rem;
+}
+#collectors-circle input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+#collectors-circle button {
+    background-color: var(--theme-pink);
+    padding: 1rem;
+    border-radius: 50px;
+    border-style: none;
+    min-width: 10rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+}
+
+#collectors-circle button:hover {
+    filter: brightness(1.05);
+    cursor: pointer;
+}
+
+#collectors-circle button h3 {
+    color: white;
+}
+
+#home-shopcontact {
+    background-color: var(--theme-lightpink);
+    min-height: fit-content;
+}
+
+#home-shopcontact-container {
+    display: flex;
+    gap: 4rem;
+    margin: 4rem 0;
+}
+
+#home-shopcontact p {
+    text-align: left;
+}
+.home-shopcontact-card {
+    background-color: white;
+    border-radius: 50px;
+    border: 5px solid var(--theme-pink);
+    padding: 2rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+    width: 40vw;
+}
+
+.home-shopcontact-card > *:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.home-shopcontact-card li {
+    text-indent: 0.5rem;
+}
+.home-shopcontact-card li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
 /* BIOGRAPHY */
 
 #aboutme-section {
@@ -246,10 +389,6 @@ footer nav {
     background-position: top;
     min-height: fit-content;
     height: 100vh;
-}
-
-.gallery-carousel-container .center-div {
-    margin-bottom: 4rem;
 }
 
 .gallery-carousel-display {
