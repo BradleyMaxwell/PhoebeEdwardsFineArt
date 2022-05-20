@@ -112,7 +112,6 @@ header nav { /* Main Navigation Bar */
     border-bottom-style: solid;
     border-bottom-width: 1px;
     color: #707070;
-    min-height: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,17 +124,33 @@ header nav ul { /* the content in the nav bar specifically for header */
     align-items: center;
 }
 
+header nav ul:first-child {
+    margin-left: 2rem;
+}
+
+header nav ul:last-child {
+    margin-right: 2rem;
+}
+
 header nav ul li {
     list-style: none;
-    margin: 1rem;
+}
+
+header nav ul li:not(:first-child) {
+    margin-left: 3rem;
 }
 
 header nav ul a {
     text-decoration: none;
     color: var(--theme-grey);
-    font-size: 1.4375rem;
+    font-size: 1.3rem;
+    display: flex;
+    padding: 1.5rem 0;
 }
 
+header img {
+    height: 2rem;
+}
 
 header nav a:hover {
     color: black;
@@ -596,6 +611,55 @@ footer nav {
     font-weight: 400;
     color: black;
 }
+
+/* CONTACT */
+
+#contact-form input, textarea, select {
+    border-radius: 40px;
+    padding: 1rem;
+    border-style: none;
+    font-size: 1.1rem;
+    width: 20vw;
+}
+
+#contact-form input:focus, textarea:focus, select:focus {
+    outline: 1px solid black;
+}
+
+#contact-form button {
+    padding: 1rem 2rem;
+    background-color: var(--theme-lightpink);
+    border-style: none;
+    border-radius: 50px;
+    margin: 2rem 0 4rem 0;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+}
+
+#contact-form button:hover {
+    filter: brightness(1.05);
+}
+
+
+#contact-form-container {
+    display: flex;
+    background-color: var(--theme-lightgrey);
+    width: fit-content;
+    padding: 4rem;
+    border-radius: 50px;
+    gap: 4rem;
+    box-shadow: 0px 0px 10px var(--theme-grey);
+}
+
+.contact-info:not(:last-child) {
+    margin-bottom: 2rem;
+}
+#contact-message textarea {
+    height: 100%;
+    width: 40vw;
+    resize: none;
+}
+/* LOGIN/SIGNUP */
 
 .loginSignup-container {
     height: fit-content;
