@@ -150,6 +150,27 @@ header nav ul a {
 
 header img {
     height: 2rem;
+    position: relative;
+}
+
+#header-basket-icon {
+    position: relative
+}
+
+#header-basket-icon span {
+    position: absolute;
+    top: -0.78125rem;
+    right: -0.78125rem;
+    background-color: var(--theme-pink);
+    border-radius: 100%;
+    width: 1.5625rem;
+    min-width: fit-content;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: black;
 }
 
 header nav a:hover {
@@ -227,6 +248,8 @@ footer nav {
     background-image: url("/images/backgrounds/paintingpic.png");
     background-repeat: no-repeat;
 }
+
+
 
 #home-biography-text {
     display: flex;
@@ -519,7 +542,8 @@ footer nav {
 }
 
 .shop-item-focus {
-    background-color: var(--theme-lightpink);
+    background-image: linear-gradient(to bottom, white , var(--theme-lightpink) );
+    position: relative;
 }
 
 .shop-item-focus-card {
@@ -615,6 +639,57 @@ footer nav {
     color: black;
 }
 
+.toast {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.toast img {
+    height: 3rem;
+    aspect-ratio: 1 / 1;
+}
+
+.toast-content {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.toast-content p {
+    color: black;
+}
+
+.toast-content div {
+    display: flex;
+    gap: 1rem;
+}
+.toast-content button {
+    border-style: none;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.toast-content button:hover {
+    filter: brightness(1.1);
+}
+
+.toast-continue-button {
+    color: white;
+    background-color: var(--theme-grey);
+}
+
+.toast-basket-button {
+    background-color: var(--theme-pink);
+}
 /* CONTACT */
 
 #contact-form input, textarea, select {
@@ -708,4 +783,96 @@ footer nav {
 
 .loginSignup div {
     margin-top: 2rem;
+}
+
+/* BASKET */
+
+#basket-background {
+    background-image: linear-gradient(to bottom, white , var(--theme-lightpink) );
+}
+
+#basket-background h1 {
+    margin: 4rem;
+}
+
+#basket-item-card-container {
+    background-color: white;
+    width: fit-content;
+    border: 3px solid var(--theme-pink);
+    border-radius: 64px;
+    padding: 3rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+}
+
+#basket-item-card-container h3 {
+    font-weight: 400;
+}
+
+#basket-item-card-container p {
+    color: black;
+}
+
+.basket-item-card {
+    border: 1px solid var(--theme-lightgrey);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.basket-item-card img {
+    border-radius: 18px;
+    max-width: 50%;
+    object-fit: cover;
+    height: 22.5rem;
+}
+.basket-item-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.basket-item-choiceinfo h3 {
+    margin-bottom: 2rem;
+}
+
+.basket-item-choiceinfo div > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.basket-item-orderinfo {
+    display: flex;
+    gap: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.basket-item-quantity p {
+    display: inline;
+    margin: 0 1rem;
+}
+
+.basket-item-quantity button {
+    height: fit-content;
+    width: fit-content;
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#checkoutButton {
+    cursor: pointer;
+    border-style: none;
+    background-color: var(--theme-pink);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    margin: 3rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+}
+
+#checkoutButton a {
+    text-decoration: none;
+}
+
+#checkoutButton:hover {
+    filter: brightness(1.1);
 }

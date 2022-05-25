@@ -1,0 +1,40 @@
+<div id="basket-background">
+    <div class="center-div">
+        <h1>YOUR BASKET</h1>
+    </div>
+    <div class="center-div">
+        <div id="basket-item-card-container">
+            <div class="center-div">
+                <h2>IN YOUR BASKET</h2>
+            </div>
+            <% session.basket.items.forEach(item => { %>
+                <div class="basket-item-card">
+                    <div class="basket-item-info">
+                        <img src="<%= item.relevantArtworkInfo.image %>" class="basket-item-image">
+                        <div class="basket-item-choiceinfo">
+                            <h3 class="basket-item-title"><%= item.relevantArtworkInfo.title %></h3>
+                            <div>
+                                <p class="basket-item-size">Size: <%= item.size %></p>
+                                <p class="basket-item-framing">Framing: <%= item.selectedFraming %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="basket-item-orderinfo center-div">
+                        <p>Price: £<%= item.unitPrice %></p>
+                        <div class="basket-item-quantity">
+                            <p>Quantity: <button class="reduce-quantity-button"><p>-</p></button><%= item.quantity %><button class="increase-quantity-button"><p>+</p></button></p>
+                        </div>
+                        <p>Subtotal: £<%= item.quantity * item.unitPrice %></p>
+                    </div>
+                </div>
+            <% }) %>
+            <div class="center-div">
+                <h3>Total Price: £<%= session.basket.totalPrice %></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-div">
+        <button id="checkoutButton"><a href=""><h3>CHECKOUT</h3></a></button>
+    </div>
+</div>

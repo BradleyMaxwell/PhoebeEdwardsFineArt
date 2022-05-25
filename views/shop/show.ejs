@@ -6,7 +6,7 @@
             </div>
             <div id="shop-item-focus-info">
                 <div class="center-div">
-                    <h2><i><%= artwork.title %> (<%= product.productType %>)</i></h2>
+                    <h2 id="product-heading" data-id="<%= product.id %>"><i><%= artwork.title %> (<%= product.productType %>)</i></h2>
                 </div>
                 <p>Context of Work: <%= artwork.context %></p>
 
@@ -92,6 +92,17 @@
                 <% } %>
 
                 <button id="addBasketButton"><h3>Add to Basket</h3></button>
+
+                <div class="toast">
+                    <div class="toast-content">
+                        <img src="/images/icons/successtick.svg" alt="">
+                        <p>Successfully Added to Cart!</p>
+                        <div>
+                            <button class="toast-continue-button">Continue Shopping</button>
+                            <button class="toast-basket-button">View Basket</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

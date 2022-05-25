@@ -1,7 +1,18 @@
 // Initialise the values from the data attributes at the start so they do not effect the script if a user changes them in dev tools
 
+const productHeading = document.getElementById("product-heading") // where the id of the product is being sent through
+const productId = productHeading.dataset.id
+
 let isOriginal
 let hasFramingOption
+
+let price = [] // stores the price for each different print size or just one index if its an original
+let framingOptions = [] // stores the framing options
+let framingPrice = [] // stores the framing price for each print size or just one index if its original
+
+let selectedPrint = 0 // index that will be used to find the print print price and the frame price
+let selectedFramingOption
+let additionalFramingPrice = 0
 
 const printSizeButtons = Array.from(document.querySelectorAll('.printSizeButton'))
 const framingOptionButtons = Array.from(document.querySelectorAll('.framingOptionButton'))
@@ -19,7 +30,6 @@ if ( framingOptionButtons.length !== 0 ) { // determine whether the item has fra
 }
 
 // find the price for the artworks based on if it is an original or print
-price = [] 
 
 if ( isOriginal ) {
     const originalPriceSpan = document.getElementById("originalPrice")
@@ -31,8 +41,6 @@ if ( isOriginal ) {
 }
 
 // find the framing options for the piece if the piece has framing options and the price based off the print sizes
-framingOptions = []
-framingPrice = []
 
 if ( hasFramingOption ) {
     framingOptionButtons.forEach(button => {
@@ -51,10 +59,6 @@ if ( hasFramingOption ) {
 
 // set default framing option if the product has framing option to None and the framingPrice to 0
 // set default price to A5 price if the piece is print, otherwise set it to original price which will not change
-
-let selectedPrint = 0 // index that will be used to find the print print price and the frame price
-let selectedFramingOption
-let additionalFramingPrice = 0
 
 if ( hasFramingOption ) {
     selectedFramingOption = 0
@@ -128,3 +132,33 @@ function displayTotalPrice () {
     const priceDisplay = document.getElementById('priceDisplay')
     priceDisplay.innerText = message
 }
+
+// WHAT HAPPENS WHEN THE ADD THE BASKET BUTTON IS PRESSED
+
+const addBasketButton = document.getElementById("addBasketButton")
+
+addBasketButton.addEventListener('click', async () => {
+    let toast = document.querySelector('.toast');
+    toast.style.display = "block";
+    try {
+        const res = await fetch('/basket/add', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                productId,
+                printChoice: selectedPrint,
+                framingChoice: framingOptions[selectedFramingOption]
+            })
+
+        })
+
+        if (res.ok) {
+            console.log(res.body)
+        }
+
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+})
+

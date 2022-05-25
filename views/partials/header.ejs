@@ -17,7 +17,22 @@
             <% } else { %>
                 <li><a href="/user/login">Login</a></li>
             <% } %>
-            <li><a href=""><img src="/images/icons/basket.svg" alt=""></a></li>
+            <li>
+                <a href="/basket">
+                    <div id="header-basket-icon">
+                        <img src="/images/icons/basket.svg" alt="">
+                        <% if (session.basket.items.length > 0) { %>
+                            <span>
+                                <% if (session.basket.items.length > 9) { %>
+                                    9+
+                                <% } else { %>
+                                    <%= session.basket.items.length %>
+                                <% } %>
+                            </span>
+                        <% } %>
+                    </div>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
