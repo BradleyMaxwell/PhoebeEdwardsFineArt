@@ -138,8 +138,6 @@ function displayTotalPrice () {
 const addBasketButton = document.getElementById("addBasketButton")
 
 addBasketButton.addEventListener('click', async () => {
-    let toast = document.querySelector('.toast');
-    toast.style.display = "block";
     try {
         const res = await fetch('/basket/add', {
             method: 'POST',
@@ -151,10 +149,6 @@ addBasketButton.addEventListener('click', async () => {
             })
 
         })
-
-        if (res.ok) {
-            console.log(res.body)
-        }
 
     }
     catch (err) {

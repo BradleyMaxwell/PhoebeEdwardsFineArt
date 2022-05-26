@@ -1,36 +1,39 @@
 class Basket {
     constructor (basketItems) {
         this.items = basketItems // basketItems is an array of json objects
-        this.totalPrice = 0
     }
 
     add (item) { // add a product into the basket
         const inBasketResult = inBasket(this.items, item)
         if (inBasketResult !== false) {
-            this.items[inBasketResult].quantity++
+            if (this.items[inBasketResult].productType === "Print") {
+                this.items[inBasketResult].quantity++
+            } else {
+                console.log("cannot add that item because it is already in the basket")
+            }
         } else {
             item.quantity = 1
             this.items.push(item)
         }
-
-        this.calculateTotal()
     }
 
-    delete (item) { // reduces the quantity of a given item by 1, or removes it from the basket if it's the last one of that item
-        const inBasketResult = inBasket(this.items, item)
-        if (inBasketResult !== false) {
-            this.items[inBasketResult].quantity--
-            if (this.items[inBasketResult].quantity <= 0) {
-                this.items.splice(inBasketResult, 1)
-            }
+    reduceQuantity (index) {
+        let foundItem = this.items[index]
+        if (foundItem.quantity - 1 <= 0) { // then remove it from array if the quantity becomes 0
+            this.items.splice(index, 1)
+            console.log("removed item from the basket")
+        } else {
+            foundItem.quantity--
         }
+
     }
 
-    calculateTotal () { // call this every time a change is made to the basket
-        this.totalPrice = 0
-        for (let item = 0; item < this.items.length; item++) {
-            const currentItem = this.items[item]
-            this.totalPrice += currentItem.unitPrice * currentItem.quantity
+    increaseQuantity (index) {
+        let foundItem = this.items[index]
+        if (foundItem.productType === "Print") { // only allow increasing of quantity for print
+            foundItem.quantity++
+        } else {
+            console.log("cannot increase quantity for an item of an original product")
         }
     }
 }
