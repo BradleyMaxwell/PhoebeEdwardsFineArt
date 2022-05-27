@@ -2,6 +2,10 @@ const checkoutButton = document.querySelector("#checkoutButton")
 
 checkoutButton.addEventListener('click', async (e) => {
     e.preventDefault()
+    const checkoutButtonText = checkoutButton.querySelector('h3')
+    checkoutButtonText.innerText = "PROCESSING.."
+    checkoutButton.classList.add("processing")
+    
     await fetch('/basket/checkout', {
         method: "POST"
     }).then(res => {

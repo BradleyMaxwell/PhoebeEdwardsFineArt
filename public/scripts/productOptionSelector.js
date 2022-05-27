@@ -137,7 +137,8 @@ function displayTotalPrice () {
 
 const addBasketButton = document.getElementById("addBasketButton")
 
-addBasketButton.addEventListener('click', async () => {
+addBasketButton.addEventListener('click', async (e) => {
+    e.preventDefault()
     try {
         const res = await fetch('/basket/add', {
             method: 'POST',
@@ -149,6 +150,11 @@ addBasketButton.addEventListener('click', async () => {
             })
 
         })
+
+        if (res.ok) {
+            console.log('added to basket')
+            $("#header-basket-icon").load(location.href+" #header-basket-icon>*","");
+        }
 
     }
     catch (err) {

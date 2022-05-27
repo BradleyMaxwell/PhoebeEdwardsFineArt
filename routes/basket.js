@@ -77,7 +77,8 @@ router.post('/add', async (req, res) => { // adding to basket from the shop
             console.log(err)
         }
     })
-    console.log(req.session.basket)
+    
+    res.json()
 })
 
 router.post('/reduce-quantity', (req, res) => { // for reducing quantity / deleting from basket
@@ -133,7 +134,6 @@ router.post('/checkout', async (req, res) => { // checking out the user's sessio
 
         data = {
             title: artwork.title + " (" + product.productType + ")",
-            imagePath: artwork.imagePath,
             unitPrice: unitPrice * 100, // stripe uses it as pennies/cents
             size,
             selectedFraming: basketItems[item].selectedFraming,
@@ -163,7 +163,8 @@ router.post('/checkout', async (req, res) => { // checking out the user's sessio
                     quantity: item.quantity,
                     description: "Size: " + item.size + ", Framing: " + item.selectedFraming,
                 }
-            }), // change this to a non foreach loop because it is not async
+            }),
+
             success_url: `${process.env.SERVER_URL}/basket/checkout/success`,
             cancel_url: `${process.env.SERVER_URL}/basket`
         })
@@ -175,6 +176,7 @@ router.post('/checkout', async (req, res) => { // checking out the user's sessio
 })
 
 router.get('/checkout/success', (req, res) => {
+    req.session.destroy()
     res.render('basket/success')
 })
 

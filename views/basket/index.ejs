@@ -1,45 +1,60 @@
-<div id="basket-background">
-    <div class="center-div">
-        <h1>YOUR BASKET</h1>
-    </div>
-    <div class="center-div">
-        <div id="basket-item-card-container">
-            <div class="center-div">
-                <h2>IN YOUR BASKET</h2>
-            </div>
-            <% basket.forEach(item => { %>
-                <div class="basket-item-card">
-                    <div class="basket-item-info">
-                        <img src="<%= item.imagePath %>" class="basket-item-image">
-                        <div class="basket-item-choiceinfo">
-                            <h3 class="basket-item-title"><%= item.title %> (<%= item.productType %>)</h3>
-                            <div>
-                                <p class="basket-item-size">Size: <%= item.size %></p>
-                                <p class="basket-item-framing">Framing: <%= item.selectedFraming %></p>
+<main id="basket-background">
+    <div >
+        <div class="center-div">
+            <h1>YOUR BASKET</h1>
+        </div>
+        <div class="center-div">
+            <div id="basket-item-card-container">
+                <div class="center-div">
+                    <h2>IN YOUR BASKET</h2>
+                </div>
+                <% if (basket.length === 0) { %>
+                    <div id="empty-basket">
+                        <p>Looks like your basket is empty.</p>
+                        <div class="center-div">
+                            <a href="/shop">
+                                <button><p>START SHOPPING</p></button>
+                            </a>
+                        </div>
+                    </div>
+                <% } %>
+                <% for (let itemIndex = 0; itemIndex < basket.length; itemIndex++) { %>
+                    <div class="basket-item-card">
+                        <div class="basket-item-info">
+                            <img src="<%= basket[itemIndex].imagePath %>" class="basket-item-image">
+                            <div class="basket-item-choiceinfo">
+                                <h3 class="basket-item-title"><%= basket[itemIndex].title %> (<%= basket[itemIndex].productType %>)</h3>
+                                <div>
+                                    <p class="basket-item-size">Size: <%= basket[itemIndex].size %></p>
+                                    <p class="basket-item-framing">Framing: <%= basket[itemIndex].selectedFraming %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="basket-item-orderinfo center-div">
-                        <p>Price: £<%= item.unitPrice %></p>
-                        <div class="basket-item-quantity">
-                            <p>Quantity: <button class="reduce-quantity-button"><p>-</p></button>
-                            <%= item.quantity %>
-                            <% if (item.productType === "Print") { %><button class="increase-quantity-button"><p>+</p></button><% } %></p>
+                        <div class="basket-item-orderinfo center-div">
+                            <p>Price: £<%= basket[itemIndex].unitPrice %></p>
+                            <div class="basket-item-quantity">
+                                <p>Quantity: <button onclick="reduceQuantity(<%= itemIndex %>)" class="reduce-quantity-button"><p>-</p></button>
+                                <%= basket[itemIndex].quantity %>
+                                <% if (basket[itemIndex].productType === "Print") { %><button onclick="increaseQuantity(<%= itemIndex %>)" class="increase-quantity-button"><p>+</p></button><% } %></p>
+                            </div>
+                            <p>Subtotal: £<%= basket[itemIndex].quantity * basket[itemIndex].unitPrice %></p>
                         </div>
-                        <p>Subtotal: £<%= item.quantity * item.unitPrice %></p>
                     </div>
-                </div>
-            <% }) %>
-            <div class="center-div">
-                <h3>Total Price: £<%= totalPrice %></h3>
+                <% } %>
+                <% if (basket.length !== 0) { %>
+                    <div class="center-div">
+                        <h3>Total Price: £<%= totalPrice %></h3>
+                    </div>
+                <% } %>
             </div>
         </div>
-    </div>
-
-    <div class="center-div">
-        <button id="checkoutButton"><a href=""><h3>CHECKOUT</h3></a></button>
-    </div>
-</div>
-
-<script defer src="/scripts/basketQuantity.js"></script>
+    
+        <% if (basket.length !== 0) { %>
+            <div class="center-div">
+                <button id="checkoutButton"><a href=""><h3>CHECKOUT</h3></a></button>
+            </div>
+        <% } %>
+    </div>    
+</main>
+<script id="basketQuantity" defer src="/scripts/basketQuantity.js"></script>
 <script defer src="/scripts/checkout.js"></script>
