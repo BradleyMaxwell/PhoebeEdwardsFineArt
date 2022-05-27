@@ -1,3 +1,22 @@
-<h1>Your order is on it's way!</h1>
+<script>
+    $("#header-basket-icon").load(location.href+" #header-basket-icon>*");
+</script>
 
-<button>Back to Gallery</button>
+<main id="success-page">
+    <div class="center-div-xy">
+        <div id="success-page-message">
+            <h1>Your order has been received!</h1>
+            <p>
+                A confirmation email will be sent to you shortly. Thank you for your purchase!
+            </p>
+
+            <p style="text-align: left;">From,</p>
+            <div class="center-div">
+                <img src="/images/icons/logo.svg" alt="">
+            </div>
+        </div>
+
+        <a href="/">
+            <button><p>EXPLORE MORE</p></button>
+        </a>
+</main>

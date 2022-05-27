@@ -907,3 +907,43 @@ footer nav {
 .processing {
     filter: brightness(1.1);
 }
+
+/* SUCCESS PAGE */
+
+#success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#success-page p {
+    color: black;
+}
+
+#success-page button {
+    cursor: pointer;
+    border-style: none;
+    background-color: var(--theme-pink);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    margin: 3rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+    margin-bottom: 0;
+}
+
+#success-page button:hover {
+    filter: brightness(1.1);
+}
+
+#success-page-message {
+    padding: 4rem;
+    box-shadow: 0px 3px 10px var(--theme-grey);
+}
+
+#success-page-message > *:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+#success-page-message img {
+    width: 80%
+}
