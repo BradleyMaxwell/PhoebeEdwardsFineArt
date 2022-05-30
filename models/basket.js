@@ -40,7 +40,7 @@ class Basket {
 
 function inBasket (basketItems, item) { // returns an index value of where the item is in the basket item array if it is found, or false otherwise
     for (let index = 0; index < basketItems.length; index++) {
-        if (basketItems[index].productId === item.productId && basketItems[index].size === item.size && basketItems[index].selectedFraming === item.selectedFraming) { // the condition for grouping basked items
+        if (basketItems[index].productId === item.productId && basketItems[index].selectedPrint === item.selectedPrint && basketItems[index].selectedFraming === item.selectedFraming) { // the condition for grouping basked items
             return index
         }
     }

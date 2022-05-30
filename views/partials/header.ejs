@@ -1,22 +1,6 @@
 <header>
     <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/biography">Biography</a></li>
-            <li><a href="/gallery">Gallery</a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-
-        <ul>
-            <% if ( adminUser ) { %>
-                <li><a href="/admin">Admin</a></li>
-            <% } %>
-            <% if ( user || adminUser ) { %>
-                <li><a href="/user/logout">Logout</a></li>
-            <% } else { %>
-                <li><a href="/user/login">Login</a></li>
-            <% } %>
+        <ul id="user-links">
             <li>
                 <a href="/basket">
                     <div id="header-basket-icon">
@@ -33,6 +17,24 @@
                     </div>
                 </a>
             </li>
+
+            <% if ( adminUser ) { %>
+                <li><a href="/admin">Admin</a></li>
+            <% } %>
+            <% if ( user || adminUser ) { %>
+                <li><a href="/user/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/user/login">Login</a></li>
+            <% } %>
+        </ul>
+
+        <button class="mobile-nav-toggle" aria-controls="menu-links" aria-expanded="false"><img src="/images/icons/menu.svg" alt=""></button>
+        <ul id="menu-links" data-visible="false">
+            <li><a href="/">Home</a></li>
+            <li><a href="/biography">Biography</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
 </header>

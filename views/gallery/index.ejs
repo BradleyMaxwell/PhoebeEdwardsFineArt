@@ -8,8 +8,10 @@
             <% galleries.forEach(gallery => { %>
                 <div class="gallery-preview">
                     <a href="/gallery/<%= gallery[0].id %>">
-                        <img height="200" src="<%= gallery[1].imagePath %>" alt="">
-                        <h3><%= gallery[0].name %></h3>
+                        <img src="<%= gallery[1].imagePath %>" alt="">
+                        <div class="center-div">
+                            <h3><%= gallery[0].name %></h3>
+                        </div>
                     </a>
                 </div>
             <% }) %>

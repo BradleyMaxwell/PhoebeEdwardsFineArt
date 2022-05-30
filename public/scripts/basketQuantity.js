@@ -11,7 +11,7 @@ async function reduceQuantity (itemIndex) {
 
         if (res.ok) {
             $("#header-basket-icon").load(location.href+" #header-basket-icon>*");
-            $("#basket-item-card-container").load(location.href+" #basket-item-card-container>*","");
+            $("#basket-container").load(location.href+" #basket-container>*","");
         }
     }
     catch (err) {

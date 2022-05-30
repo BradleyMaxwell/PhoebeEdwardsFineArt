@@ -36,7 +36,7 @@
 
 <section class="home-section" id="home-gallery">
     <div class="center-div">
-        <h3 style="margin: 4rem 0;">I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
+        <h3 style="margin: 4rem 0.7rem;">I specialise in oil paintings, drawing, digital mediums, photography, and printing. Take a look at some of my recent works in My Gallery.</h2>
     </div>
 
         <div class="gallery-carousel-container" id="home-carousel">
@@ -55,7 +55,9 @@
                                 <a href="/gallery/<%= gallery[0].id %>">
                                     <div class="gallery-carousel-element">
                                         <img src="<%= gallery[1].imagePath %>" alt="">
-                                        <h3><%= gallery[0].name %></h3>
+                                        <div class="center-div">
+                                            <h3><%= gallery[0].name %></h3>
+                                        </div>
                                     </div>
                                 </a>
                             <% }) %>

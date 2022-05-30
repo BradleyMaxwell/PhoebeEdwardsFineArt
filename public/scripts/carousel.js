@@ -5,14 +5,15 @@ galleryCarousels.forEach(gallery => { // add functionality to the previous and n
     const nextButton = gallery.querySelector('.next-button')
     const carouselContent = gallery.querySelector('.gallery-carousel-content')
     const elements = Array.from(gallery.querySelectorAll('.gallery-carousel-element'));
-
-    if (elements.length > 3) {
-        nextButton.style.display = 'block' // if there is 3 or less artworks in the gallery then the user cannot go to the next 3 artworks
-    }
-
-    let maxNextTurns = Math.ceil(elements.length / 3) - 1 // how many times the user can click next until they reach the end of the carousel
+    
+    let elementsOnDisplay = getComputedStyle(document.documentElement).getPropertyValue('--carousel-element-on-display');
+    let maxNextTurns = Math.ceil(elements.length / elementsOnDisplay) - 1 // how many times the user can click next until they reach the end of the carousel
     let index = 0 // this tracks what part of the carousel the user is on
     let translateDistance = -87.5 // how far the content should move upon one button click
+
+    if (elements.length > elementsOnDisplay) {
+        nextButton.style.display = 'block' // if there is 3 or less artworks in the gallery then the user cannot go to the next 3 artworks
+    }
 
     previousButton.addEventListener('click', () => {
         index -= 1
@@ -39,4 +40,23 @@ galleryCarousels.forEach(gallery => { // add functionality to the previous and n
         carouselContent.style.transform = 'translateX(' + newCarouselPosition + 'vw)'
     })
 
+    window.addEventListener('resize', (e) => {
+        // recalculate maxNextTurns
+        elementsOnDisplay = getComputedStyle(document.documentElement).getPropertyValue('--carousel-element-on-display');
+
+        const oldMaxNextTurns = maxNextTurns
+        maxNextTurns = Math.ceil(elements.length / elementsOnDisplay) - 1
+        
+        if ( maxNextTurns !== oldMaxNextTurns) { // means the elements on display has changed
+            index = 0
+            carouselContent.style.transform = 'translateX(0)' // bring back to start
+            carouselContent.style['-webkit-transform'] = 'translateX(0)'
+            previousButton.style.display = 'none'
+            nextButton.style.display = 'none'
+            
+            if ( index !== maxNextTurns ) {
+                nextButton.style.display = 'block'
+            }
+        }
+    })
 })

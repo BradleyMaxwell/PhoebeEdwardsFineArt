@@ -68,8 +68,10 @@ router.post('/add', async (req, res) => { // adding to basket from the shop
         selectedFraming
     }
 
+    console.log(basketItem)
     // updating and saving the session basket 
     let basket = new Basket(req.session.basket.items)
+    console.log(basket.items)
     basket.add(basketItem)
     req.session.basket = basket
     req.session.save(err => {

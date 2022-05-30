@@ -1,7 +1,7 @@
 
 <div class="individual-gallery center-div-xy">
     <div class="gallery-carousel-container">
-        <div class="center-div">
+        <div class="center-div" style="margin-bottom: 3rem;">
             <h1><%= gallery.name %></h1>
         </div>
 
@@ -19,7 +19,9 @@
                         <% artworks.forEach(artwork => { %>
                             <div class="gallery-carousel-element">
                                 <img src="<%= artwork.imagePath %>" alt="">
-                                <h3><%= artwork.title %></h3>
+                                <div class="center-div">
+                                    <h2><%= artwork.title %></h2>
+                                </div>
                             </div>
                         <% }) %>
                     </div>
