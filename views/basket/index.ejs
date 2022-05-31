@@ -33,9 +33,12 @@
                         <div class="basket-item-orderinfo center-div">
                             <p>Price: £<%= basket[itemIndex].unitPrice %></p>
                             <div class="basket-item-quantity">
-                                <p>Quantity: <button onclick="reduceQuantity(<%= itemIndex %>)" class="reduce-quantity-button"><p>-</p></button>
-                                <%= basket[itemIndex].quantity %>
-                                <% if (basket[itemIndex].productType === "Print") { %><button onclick="increaseQuantity(<%= itemIndex %>)" class="increase-quantity-button"><p>+</p></button><% } %></p>
+                                <p>Quantity: </p>
+                                <span>
+                                    <button onclick="reduceQuantity(<%= itemIndex %>)" class="reduce-quantity-button">-</button>
+                                    <p style="display: inline"><%= basket[itemIndex].quantity %></p>
+                                    <% if (basket[itemIndex].productType === "Print") { %><button onclick="increaseQuantity(<%= itemIndex %>)" class="increase-quantity-button">+</button><% } %>
+                                </span>
                             </div>
                             <p>Subtotal: £<%= basket[itemIndex].quantity * basket[itemIndex].unitPrice %></p>
                         </div>

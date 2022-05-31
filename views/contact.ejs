@@ -3,44 +3,44 @@
 </div>
 
 <div class="center-div">
-    <form action="" id="contact-form">
+    <form action="/contact" method="POST" id="contact-form">
         <div id="contact-form-container">
             <div id="contact-info-container">
                 <div class="contact-info">
-                    <label for="">
+                    <label for="firstname">
                         <p>First Name</p>
                     </label>
-                    <input type="text">
+                    <input type="text" name="firstname" required>
                 </div>
             
                 <div class="contact-info">
-                    <label for="">
+                    <label for="lastname">
                         <p>Last Name</p>
                     </label>
-                    <input type="text">
+                    <input type="text" name="lastname" required>
                 </div>
             
                 <div class="contact-info">
-                    <label for="">
+                    <label for="email">
                         <p>Email</p>
                     </label>
-                    <input type="email" name="" id="">
+                    <input type="email" name="email" id="" required>
                 </div>
             
                 <div class="contact-info">
-                    <label for="">
+                    <label for="subject">
                         <p>Subject</p>
                     </label>
-                    <select name="" id="">
-                        <option value="">Commission Work</option>
-                        <option value="">General Enquiries</option>
-                        <option value="">Question</option>
+                    <select name="subject" id="">
+                        <option value="Commission Work">Commission Work</option>
+                        <option value="General Enquiry">General Enquiry</option>
+                        <option value="Question">Question</option>
                     </select>
                 </div>
             </div>
         
             <div id="contact-message">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Write Your Message Here..."></textarea>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Write Your Message Here..."></textarea>
             </div>
         </div>
     
