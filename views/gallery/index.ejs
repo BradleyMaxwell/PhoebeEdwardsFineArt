@@ -1,20 +1,22 @@
-<div class="center-div-xy">
-    <div id="gallery-browse">
-        <div class="center-div">
-            <h1>MY GALLERY</h1>
-        </div>
-    
-        <div id="gallery-preview-container">
-            <% galleries.forEach(gallery => { %>
-                <div class="gallery-preview">
-                    <a href="/gallery/<%= gallery[0].id %>">
-                        <img src="<%= gallery[1].imagePath %>" alt="">
-                        <div class="center-div">
-                            <h3><%= gallery[0].name %></h3>
-                        </div>
-                    </a>
-                </div>
-            <% }) %>
+<main>
+    <div class="center-div-xy">
+        <div id="gallery-browse">
+            <div class="center-div">
+                <h1>MY GALLERY</h1>
+            </div>
+        
+            <div id="gallery-preview-container">
+                <% galleries.forEach(gallery => { %>
+                    <div class="gallery-preview">
+                        <a href="/gallery/<%= gallery[0].id %>">
+                            <img src="<%= gallery[1].imagePath %>" alt="">
+                            <div class="center-div">
+                                <h3><%= gallery[0].name %></h3>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
         </div>
     </div>
-</div>
+</main>
