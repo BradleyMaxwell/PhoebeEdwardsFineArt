@@ -1221,10 +1221,6 @@ header nav a:hover {
 }
 
 #home-carousel .gallery-carousel-element:hover {
-    transform: none;
-}
-
-#home-carousel .gallery-carousel-element:hover > img {
     transform: scale(1.05);
 }
 
