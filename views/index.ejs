@@ -74,15 +74,16 @@
         </div>
 </section>
 
-<div class="center-div">
-    <div id="collectors-circle">
-        <h1>JOIN MY COLLECTOR'S CIRCLE!</h1>
-        <p>For studio news and special offers.</p>
-        <input type="email" name="email" id="" placeholder="Enter Email...">
-        <div class="center-div">
-            <button><h3>JOIN</h3></button>
+<div class="center-div" id="collectors-circle-container">
+        <div id="collectors-circle">
+            <h1>JOIN MY COLLECTOR'S CIRCLE!</h1>
+            <p>For studio news and special offers.</p>
+            <input type="email" name="email" id="" placeholder="Enter Email..." required aria-required="true">
+            <div class="center-div">
+                <button><h3>JOIN</h3></button>
+            </div>
         </div>
-    </div>
+        <div id="collectors-circle-response"></div>
 </div>
 
 <section class="home-section" id="home-shopcontact">
@@ -126,3 +127,4 @@
 </section>
 
 <script defer src="/scripts/carousel.js"></script>
+<script defer src="/scripts/collectorsCircle.js"></script>

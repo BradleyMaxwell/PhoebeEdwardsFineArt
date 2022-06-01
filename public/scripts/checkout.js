@@ -2,10 +2,10 @@ const checkoutButton = document.querySelector("#checkoutButton")
 
 checkoutButton.addEventListener('click', async (e) => {
     e.preventDefault()
-    const checkoutButtonText = checkoutButton.querySelector('h3')
-    checkoutButtonText.innerText = "PROCESSING.."
-    checkoutButton.classList.add("processing")
-    
+    let processingResponse = document.querySelector('.processing')
+            processingResponse.innerText = "Redirecting you to checkout..."
+            processingResponse.style.display = 'block'
+
     await fetch('/basket/checkout', {
         method: "POST"
     }).then(res => {
@@ -16,6 +16,7 @@ checkoutButton.addEventListener('click', async (e) => {
             console.log("response was not ok")
         }
     }).then(({ url }) => {
+        processingResponse.style.display = "none"
         window.location = url
     })
 })

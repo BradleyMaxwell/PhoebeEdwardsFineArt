@@ -68,10 +68,8 @@ router.post('/add', async (req, res) => { // adding to basket from the shop
         selectedFraming
     }
 
-    console.log(basketItem)
     // updating and saving the session basket 
     let basket = new Basket(req.session.basket.items)
-    console.log(basket.items)
     basket.add(basketItem)
     req.session.basket = basket
     req.session.save(err => {
@@ -173,7 +171,7 @@ router.post('/checkout', async (req, res) => { // checking out the user's sessio
 
         res.json({ url: session.url })
     } catch (err) {
-        console.log(err.message)
+        res.json({ errorMessage: "Something went wrong. Please try again."})
     }
 })
 

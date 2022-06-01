@@ -1,111 +1,113 @@
-<div class="shop-item-focus">
-    <div class="center-div-xy">
-        <div class="shop-item-focus-card center-div">
-            <div id="shop-item-focus-image">
-                <img src="<%= artwork.imagePath %>" alt="">
-            </div>
-            <div id="shop-item-focus-info">
-                <div class="center-div">
-                    <h2 style="margin-bottom: 1rem" id="product-heading" data-id="<%= product.id %>"><i><%= artwork.title %> (<%= product.productType %>)</i></h2>
+<main>
+    <div class="shop-item-focus">
+        <div class="center-div-xy">
+            <div class="shop-item-focus-card center-div">
+                <div id="shop-item-focus-image">
+                    <img src="<%= artwork.imagePath %>" alt="">
                 </div>
-                <p>Context of Work: <%= artwork.context %></p>
-
-                <p>Mediums: <%= product.mediums %></p>
-
-                <p>Size: <%= product.size %></p>
+                <div id="shop-item-focus-info">
+                    <div class="center-div">
+                        <h2 style="margin-bottom: 1rem" id="product-heading" data-id="<%= product.id %>"><i><%= artwork.title %> (<%= product.productType %>)</i></h2>
+                    </div>
+                    <p>Context of Work: <%= artwork.context %></p>
     
-                <% if ( product.productType === "Print" ) { %>
-                    <h3>Selections</h3>
-                    <p>Select Size:</p>
-                    <div class="center-div">
-                        <div class="printSelect">
-                            <button data-price="<%= product.price[0] %>" data-framing-price="<%= product.framingPrice[0] %>" class="printSizeButton selected-print"><p>A5</p></button>
-                            <button data-price="<%= product.price[1] %>" data-framing-price="<%= product.framingPrice[1] %>"class="printSizeButton"><p>A4</p></button>
-                            <button data-price="<%= product.price[2] %>" data-framing-price="<%= product.framingPrice[2] %>"class="printSizeButton"><p>A3</p></button>
-                            <button data-price="<%= product.price[3] %>" data-framing-price="<%= product.framingPrice[3] %>"class="printSizeButton"><p>A2</p></button>
-                            <button data-price="<%= product.price[4] %>" data-framing-price="<%= product.framingPrice[4] %>"class="printSizeButton"><p>A1</p></button>
+                    <p>Mediums: <%= product.mediums %></p>
+    
+                    <p>Size: <%= product.size %></p>
+        
+                    <% if ( product.productType === "Print" ) { %>
+                        <h3>Selections</h3>
+                        <p>Select Size:</p>
+                        <div class="center-div">
+                            <div class="printSelect">
+                                <button data-price="<%= product.price[0] %>" data-framing-price="<%= product.framingPrice[0] %>" class="printSizeButton selected-print"><p>A5</p></button>
+                                <button data-price="<%= product.price[1] %>" data-framing-price="<%= product.framingPrice[1] %>"class="printSizeButton"><p>A4</p></button>
+                                <button data-price="<%= product.price[2] %>" data-framing-price="<%= product.framingPrice[2] %>"class="printSizeButton"><p>A3</p></button>
+                                <button data-price="<%= product.price[3] %>" data-framing-price="<%= product.framingPrice[3] %>"class="printSizeButton"><p>A2</p></button>
+                                <button data-price="<%= product.price[4] %>" data-framing-price="<%= product.framingPrice[4] %>"class="printSizeButton"><p>A1</p></button>
+                            </div>
                         </div>
-                    </div>
-                <% } else { %>
-                    <span hidden data-price="<%= product.price[0] %>" data-framing-price="<%= product.framingPrice[0] %>" id="originalPrice"></span>
-                <% } %>
-
-                <% if ( product.framingPrice.length !== 0 ) { %>
-                    <p>Select Framing:</p>
-                
-                    <div class="center-div">
-                        <div class="framingSelect">
-                            <button data-framing="None" class="framingOptionButton selected-framing" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/none.png">
-                                </div>
-                                <p>None</p>
-                            </button>
-                        
-                            <button data-framing="Silver" class="framingOptionButton" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/silver.jpeg" alt="">
-                                </div>
-                                <p>Silver</p>
-                            </button>
-                        
-                            <button data-framing="Gold" class="framingOptionButton" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/gold.jpeg" alt="">
-                                </div>
-                                <p>Gold</p>
-                            </button>
-                        
-                            <button data-framing="Light Wood" class="framingOptionButton" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/lightwood.jpeg" alt="">
-                                </div>
-                                <p>Light Wood</p>
-                            </button>
-                        
-                            <button data-framing="Dark Wood" class="framingOptionButton" aria>
-                                <div class="center-div">
-                                    <img src="/images/shop/darkwood.jpeg" alt="">
-                                </div>
-                                <p>Dark Wood</p>
-                            </button>
-                        
-                            <button data-framing="Black" class="framingOptionButton" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/black.png" alt="">
-                                </div>
-                                <p>Black</p>
-                            </button>
-                        
-                            <button data-framing="White" class="framingOptionButton" aria-readonly="true">
-                                <div class="center-div">
-                                    <img src="/images/shop/white.png" alt="">
-                                </div>
-                                <p>White</p>
-                            </button>
+                    <% } else { %>
+                        <span hidden data-price="<%= product.price[0] %>" data-framing-price="<%= product.framingPrice[0] %>" id="originalPrice"></span>
+                    <% } %>
+    
+                    <% if ( product.framingPrice.length !== 0 ) { %>
+                        <p>Select Framing:</p>
+                    
+                        <div class="center-div">
+                            <div class="framingSelect">
+                                <button data-framing="None" class="framingOptionButton selected-framing" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/none.png">
+                                    </div>
+                                    <p>None</p>
+                                </button>
+                            
+                                <button data-framing="Silver" class="framingOptionButton" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/silver.jpeg" alt="">
+                                    </div>
+                                    <p>Silver</p>
+                                </button>
+                            
+                                <button data-framing="Gold" class="framingOptionButton" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/gold.jpeg" alt="">
+                                    </div>
+                                    <p>Gold</p>
+                                </button>
+                            
+                                <button data-framing="Light Wood" class="framingOptionButton" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/lightwood.jpeg" alt="">
+                                    </div>
+                                    <p>Light Wood</p>
+                                </button>
+                            
+                                <button data-framing="Dark Wood" class="framingOptionButton" aria>
+                                    <div class="center-div">
+                                        <img src="/images/shop/darkwood.jpeg" alt="">
+                                    </div>
+                                    <p>Dark Wood</p>
+                                </button>
+                            
+                                <button data-framing="Black" class="framingOptionButton" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/black.png" alt="">
+                                    </div>
+                                    <p>Black</p>
+                                </button>
+                            
+                                <button data-framing="White" class="framingOptionButton" aria-readonly="true">
+                                    <div class="center-div">
+                                        <img src="/images/shop/white.png" alt="">
+                                    </div>
+                                    <p>White</p>
+                                </button>
+                            </div>
                         </div>
+                    <% } %>
+                    <div class="center-div">
+                        <h3 id="priceDisplay"></h3>
                     </div>
-                <% } %>
-                <div class="center-div">
-                    <h3 id="priceDisplay"></h3>
-                </div>
-
-                <button id="addBasketButton"><h3>Add to Basket</h3></button>
-
-                <div class="toast">
-                    <div class="toast-content">
-                        <img src="/images/icons/successtick.svg" alt="">
-                        <p>Successfully Added to Cart!</p>
-                        <div>
-                            <button class="toast-continue-button">Continue Shopping</button>
-                            <a href="/basket">
-                                <button class="toast-basket-button">View Basket</button>
-                            </a>
+    
+                    <button id="addBasketButton"><h3>Add to Basket</h3></button>
+    
+                    <div class="toast">
+                        <div class="toast-content">
+                            <img src="/images/icons/successtick.svg" alt="">
+                            <p>Successfully Added to Cart!</p>
+                            <div>
+                                <button class="toast-continue-button">Continue Shopping</button>
+                                <a href="/basket">
+                                    <button class="toast-basket-button"><a href="/basket">View Basket</a></button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 <script defer src="/scripts/productOptionSelector.js"></script>

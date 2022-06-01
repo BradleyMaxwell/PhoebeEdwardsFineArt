@@ -17,9 +17,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-
-    console.log(process.env.USER_EMAIL)
-    console.log(process.env.USER_PASS)
+    
     const options = {
         from: process.env.USER_EMAIL,
         to: "phoebeedwardsfineart@outlook.com",
@@ -29,11 +27,9 @@ router.post('/', (req, res) => {
 
     transporter.sendMail(options, (error, info) => {
         if (error) {
-            console.log(error.code)
-            res.send('error')
+            res.json({ message: "Something went wrong. Please try again."})
         } else {
-            console.log("email sent: " + info.response)
-            res.send('success')
+            res.json({ message: "Contact successful! I'll get back to you as soon as I can. Thank you!"})
         }
     })
 })

@@ -136,6 +136,13 @@ function displayTotalPrice () {
 // WHAT HAPPENS WHEN THE ADD THE BASKET BUTTON IS PRESSED
 
 const addBasketButton = document.getElementById("addBasketButton")
+let toast = document.querySelector('.toast')
+
+const continueButton = toast.querySelector('.toast-continue-button')
+
+continueButton.addEventListener('click', () => {
+    toast.style.display = 'none'
+})
 
 addBasketButton.addEventListener('click', async (e) => {
     e.preventDefault()
@@ -152,8 +159,12 @@ addBasketButton.addEventListener('click', async (e) => {
         })
 
         if (res.ok) {
-            console.log('added to basket')
             $("#header-basket-icon").load(location.href+" #header-basket-icon>*","");
+            toast.style.display = "block"
+
+            setTimeout(function () {
+                toast.style.display = "none"
+            }, 10000)
         }
 
     }

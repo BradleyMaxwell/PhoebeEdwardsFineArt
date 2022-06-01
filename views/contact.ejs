@@ -1,46 +1,52 @@
 <div class="center-div">
-    <h1 style="margin: 4rem 0 2rem 0">CONTACT ME</h1>
+    <div id="contact-response"></div>
 </div>
 
 <div class="center-div">
+    <h1 style="margin: 4rem 0 2rem 0">CONTACT ME</h1>
+</div>
+
+<div>
     <form action="/contact" method="POST" id="contact-form">
-        <div id="contact-form-container">
-            <div id="contact-info-container">
-                <div class="contact-info">
-                    <label for="firstname">
-                        <p>First Name</p>
-                    </label>
-                    <input type="text" name="firstname" required>
+        <div class="center-div">
+            <div id="contact-form-container">
+                <div id="contact-info-container">
+                    <div class="contact-info">
+                        <label for="firstname">
+                            <p>First Name</p>
+                        </label>
+                        <input type="text" name="firstname" required>
+                    </div>
+                
+                    <div class="contact-info">
+                        <label for="lastname">
+                            <p>Last Name</p>
+                        </label>
+                        <input type="text" name="lastname" required>
+                    </div>
+                
+                    <div class="contact-info">
+                        <label for="email">
+                            <p>Email</p>
+                        </label>
+                        <input type="email" name="email" id="" required>
+                    </div>
+                
+                    <div class="contact-info">
+                        <label for="subject">
+                            <p>Subject</p>
+                        </label>
+                        <select name="subject" id="">
+                            <option value="Commission Work">Commission Work</option>
+                            <option value="General Enquiry">General Enquiry</option>
+                            <option value="Question">Question</option>
+                        </select>
+                    </div>
                 </div>
             
-                <div class="contact-info">
-                    <label for="lastname">
-                        <p>Last Name</p>
-                    </label>
-                    <input type="text" name="lastname" required>
+                <div id="contact-message">
+                    <textarea name="message" id="" cols="30" rows="10" placeholder="Write Your Message Here..."></textarea>
                 </div>
-            
-                <div class="contact-info">
-                    <label for="email">
-                        <p>Email</p>
-                    </label>
-                    <input type="email" name="email" id="" required>
-                </div>
-            
-                <div class="contact-info">
-                    <label for="subject">
-                        <p>Subject</p>
-                    </label>
-                    <select name="subject" id="">
-                        <option value="Commission Work">Commission Work</option>
-                        <option value="General Enquiry">General Enquiry</option>
-                        <option value="Question">Question</option>
-                    </select>
-                </div>
-            </div>
-        
-            <div id="contact-message">
-                <textarea name="message" id="" cols="30" rows="10" placeholder="Write Your Message Here..."></textarea>
             </div>
         </div>
     
@@ -49,3 +55,48 @@
         </div>
     </form>
 </div>
+
+<script defer>
+    const form = document.querySelector('form')
+    let contactResponse = document.getElementById('contact-response')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const res = await fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: form.email.value,
+                firstname: form.firstname.value,
+                lastname: form.lastname.value,
+                subject: form.subject.value,
+                message: form.message.value
+            })
+        })
+
+        const data = await res.json()
+        
+        contactResponse.style.display = "block"
+
+        if (data.message === "Contact successful! I'll get back to you as soon as I can. Thank you!") {
+                contactResponse.classList.remove("backend-error-message")
+                contactResponse.classList.add("backend-success-message")
+            } else {
+                contactResponse.classList.remove("backend-success-message")
+                contactResponse.classList.add("backend-error-message")
+            }
+
+        contactResponse.innerText = data.message
+
+        form.email.value = null
+        form.firstname.value = null
+        form.lastname.value = null
+        form.subject.value = "Commission Work"
+        form.message.value = null
+
+        setTimeout(function () {
+            contactResponse.style.display = "none"
+        }, 5000)
+    })
+</script>
