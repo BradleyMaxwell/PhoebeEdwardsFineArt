@@ -645,6 +645,7 @@ footer a {
     border-radius: 18px;
     width: 100%;
     max-height: 60vh;
+    object-fit: cover;
 }
 
 #shop-item-focus-info {
@@ -1080,10 +1081,7 @@ footer a {
     #home-slogan {
         padding: 0.5rem 0.2rem;
     }
-    
-    #collectorscircle {
 
-    }
     #home-shopcontact-container {
         flex-wrap: wrap;
     }
@@ -1129,9 +1127,6 @@ footer a {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media all and (min-width: 768px) {
-    :root {
-    }
-
     #home-biography-content {
         justify-content: end;
     }
