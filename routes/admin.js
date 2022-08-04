@@ -188,7 +188,6 @@ router.post('/artwork', async (req, res) => { // logic for adding artwork to the
         showInGallery: req.body.showInGallery
     })
     saveImage(artwork, req.body.image) // runs the uploaded image to check the image details to make sure its correct to save
-
     try {
         const newArtwork = await artwork.save()
         res.redirect('artwork')

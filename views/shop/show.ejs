@@ -20,11 +20,18 @@
                         <p>Select Size:</p>
                         <div class="center-div">
                             <div class="printSelect">
-                                <button data-price="<%= product.price[0] %>" data-framing-price="<%= product.framingPrice[0] %>" class="printSizeButton selected-print"><p>A5</p></button>
-                                <button data-price="<%= product.price[1] %>" data-framing-price="<%= product.framingPrice[1] %>"class="printSizeButton"><p>A4</p></button>
-                                <button data-price="<%= product.price[2] %>" data-framing-price="<%= product.framingPrice[2] %>"class="printSizeButton"><p>A3</p></button>
-                                <button data-price="<%= product.price[3] %>" data-framing-price="<%= product.framingPrice[3] %>"class="printSizeButton"><p>A2</p></button>
-                                <button data-price="<%= product.price[4] %>" data-framing-price="<%= product.framingPrice[4] %>"class="printSizeButton"><p>A1</p></button>
+                                <% let setDefault = false %>
+                                <% for (let i = 0; i < product.price.length; i++) { %>
+                                    <% if (product.price[i] != null && product.price[i] !== '') { %>
+                                        <% if (setDefault === false) { %>
+                                            <button data-price="<%= product.price[i] %>" data-framing-price="<%= product.framingPrice[i] %>" class="printSizeButton selected-print"><p>A<%= 5 - i %></p></button>
+                                            <% setDefault = true %>
+                                        <% } else { %>
+                                            <button data-price="<%= product.price[i] %>" data-framing-price="<%= product.framingPrice[i] %>" class="printSizeButton"><p>A<%= 5 - i %></p></button>
+                                        <% } %> 
+                                    <% } %>
+                                <% } %>
+                                <% %>
                             </div>
                         </div>
                     <% } else { %>

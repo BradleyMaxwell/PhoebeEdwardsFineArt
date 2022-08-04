@@ -13,7 +13,12 @@
                         <% if (productWithImage[0].productType === 'Original') { %>
                             <p>£<%= productWithImage[0].price %></p>
                         <% } else { %>
-                            <p>Starting from £<%= productWithImage[0].price[0] %></p>
+                            <% for (let i = 0; i < productWithImage[0].price.length; i++) { %>
+                                <% if (productWithImage[0].price[i] != null && productWithImage[0].price[i] !== '') { %>
+                                    <p>Starting from £<%= productWithImage[0].price[i] %></p>
+                                    <% break %>
+                                <% } %>
+                            <% } %> 
                         <% } %>
                     </a>
                 </div>

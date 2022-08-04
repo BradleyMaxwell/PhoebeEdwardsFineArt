@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const productsWithImage = []
         
-        const products = await Product.find({}).sort( { artwork: 'asc'})
+        const products = await Product.find({}).sort( { artwork: 'asc' })
         for (let current = 0; current < products.length; current++) { 
             const currentProduct = products[current]
             const currentArtwork = await Artwork.findById(currentProduct.artwork)
